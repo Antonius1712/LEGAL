@@ -649,7 +649,7 @@
                                 </tr>    
                             </thead>    
                             <tbody id="appendContent">
-                                @if( count(old('judul_tambahan')) > 0 )
+                                @if( old('judul_tambahan') != null && count(old('judul_tambahan')) > 0 )
                                 @foreach (old('judul_tambahan') as $key => $val)
                                 <tr class="text-center bg-white text-black">
                                     <td>
