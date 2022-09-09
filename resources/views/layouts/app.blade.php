@@ -36,6 +36,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/pages/dashboard-analytics.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/pages/card-analytics.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/plugins/tour/tour.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('new-asset/datepicker.css') }}">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
@@ -48,7 +49,23 @@
 <!-- BEGIN: Body-->
 
 <body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" style="zoom:80%;">
-
+    <style>
+        #loading{
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url('{{ asset('assets/loading-content.gif') }}')
+                    50% 50% no-repeat rgb(249,249,249);
+            opacity:0.5;
+    
+        }
+    </style>
+    
+    <div id="loading" style="display:none;"></div>
+    
     <!-- BEGIN: Header-->
     @include('layouts.header')
     <!-- END: Header-->
@@ -117,6 +134,10 @@
     <script src="{{ asset('new-asset/select2.js') }}"></script>
     <script src="{{ asset('new-asset/datepicker.js') }}"></script>
     <!-- END: Page JS-->
+
+    <script>
+        var url = "{{ ENV('APP_URL') }}";
+    </script>
 
     @yield('script')
 

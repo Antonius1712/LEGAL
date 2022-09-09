@@ -19,9 +19,9 @@
                                     {{ Auth()->check() ? Auth()->user()->Name : '' }}
                                 </span>
                                 <span class="user-status">
-                                    {{ Auth()->check() ? Auth()->user()->DeptName : '' }}
+                                    {{ Auth()->check() ? Auth()->user()->getDept->DeptName : '' }}
                                     /
-                                    {{ Auth()->check() ? Auth()->user()->BranchName : '' }}
+                                    {{ Auth()->check() ? Auth()->user()->getBranch->BranchName : '' }}
                                 </span>
                             </div>
                         </a>

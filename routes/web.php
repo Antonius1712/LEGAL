@@ -13,11 +13,17 @@
 
 Auth::routes();
 
-// Route::get('/sf', 'LoginController@sf')->name('sf');
+Route::get('/sf', 'CheckSheetBPKBController@sf')->name('sf');
 Route::get('/logout', 'Auth\LoginController@logout');
 
-Route::middleware('auth')
+Route::middleware(['auth', 'validasi-group'])
     ->group(function(){
         Route::get('/', 'HomeController@index')->name('home');
+
+        Route::post('/check-sheet-bpkb/approve/{id}', 'CheckSheetBPKBController@approve')->name('check-sheet-bpkb.approve');
+        Route::post('/check-sheet-bpkb/save', 'CheckSheetBPKBController@save')->name('check-sheet-bpkb.save');
+        Route::get('/check-sheet-bpkb/get-data', 'CheckSheetBPKBController@getData')->name('check-sheet-bpkb.get-data');
         Route::resource('/check-sheet-bpkb', 'CheckSheetBPKBController');
 });
+
+Route::get('/generate-pdf-sheet-bpkb-legal/{id}', 'PDF\GeneratePdfSheetBpkbLegalController@index');

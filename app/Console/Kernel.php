@@ -2,6 +2,8 @@
 
 namespace App\Console;
 
+use App\Console\Commands\generate_pdf_legal;
+use App\Console\Commands\send_notification_email;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -13,7 +15,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        generate_pdf_legal::class,
+        send_notification_email::class
     ];
 
     /**
@@ -24,8 +27,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('job:generate-pdf-sheet-bpkb-legal')
+                    ->everyMinute();
+
+        $schedule->command('job:send-notification-email')
+                    ->everyMinute();
     }
 
     /**

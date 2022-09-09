@@ -11,6 +11,13 @@
                 <div class="col-lg-12 col-12 p-0">
                     <div class="card rounded-0 mb-0 px-2">
                         <div class="card-header pb-1">
+                            @if( count($errors) )
+                            <div class="col-xs-12 col-md-12 col-lg-12 p-0">
+                                <div class="alert alert-danger">
+                                    {{ $errors->all()[0] }}
+                                </div>
+                            </div>
+                            @endif
                             <div class="card-title" style="width:100%;">
                                 <h4 class="mb-0">
                                     <center>LGI</center>

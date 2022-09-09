@@ -3,15 +3,17 @@
     Form Check Sheet BPKB
 @endsection
 @section('content')
-    <div class="card">
-        <div class="card-header bg-primary text-white">
-            <p>
-                Form Check Sheet BPKB
-            </p>
-        </div>
-        <div class="card-body">
-            <form id="form-sheet" action="{{ Route('check-sheet-bpkb.store') }}" method="post">
-                {{ csrf_field() }}
+    <form id="form-sheet" action="{{ Route('check-sheet-bpkb.update', $checkSheet->id) }}" method="post">
+        {{ csrf_field() }}
+        {{ method_field('PUT') }}
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <p>
+                    Form Check Sheet BPKB
+                </p>
+            </div>
+            <div class="card-body">
+
                 <div class="card">
                     <div class="card-body bg-default-2">
                         <div class="form">
@@ -27,8 +29,8 @@
                                                 name="no_claim" 
                                                 id="no_claim" 
                                                 class="form-control"
-                                                value="{{ old('no_claim') 
-                                                            ? old('no_claim') 
+                                                value="{{ $checkSheet->no_claim
+                                                            ? $checkSheet->no_claim
                                                             : '' }}"
                                                 >
                                                 @if($errors->has('no_claim'))
@@ -43,8 +45,8 @@
                                                 name="tahun_kendaraan" 
                                                 d="tahun_kendaraan" 
                                                 class="form-control"
-                                                value="{{ old('tahun_kendaraan') 
-                                                            ? old('tahun_kendaraan') 
+                                                value="{{ $checkSheet->tahun_kendaraan
+                                                            ? $checkSheet->tahun_kendaraan
                                                             : '' }}"
                                                 >
                                                 @if($errors->has('tahun_kendaraan'))
@@ -63,8 +65,8 @@
                                                 name="no_policy" 
                                                 id="no_policy" 
                                                 class="form-control"
-                                                value="{{ old('no_policy') 
-                                                            ? old('no_policy') 
+                                                value="{{ $checkSheet->no_policy
+                                                            ? $checkSheet->no_policy
                                                             : '' }}"
                                                 >
                                                 @if($errors->has('no_policy'))
@@ -79,8 +81,8 @@
                                                 name="nomor_polisi" 
                                                 id="nomor_polisi" 
                                                 class="form-control"
-                                                value="{{ old('nomor_polisi') 
-                                                            ? old('nomor_polisi') 
+                                                value="{{ $checkSheet->nomor_polisi
+                                                            ? $checkSheet->nomor_polisi
                                                             : '' }}"
                                                 >
                                                 @if($errors->has('nomor_polisi'))
@@ -99,8 +101,8 @@
                                                 name="insured" 
                                                 id="insured" 
                                                 class="form-control"
-                                                value="{{ old('insured') 
-                                                            ? old('insured') 
+                                                value="{{ $checkSheet->insured
+                                                            ? $checkSheet->insured
                                                             : '' }}"
                                                 >
                                                 @if($errors->has('insured'))
@@ -115,8 +117,8 @@
                                                 name="date_of_loss" 
                                                 id="date_of_loss" 
                                                 class="form-control"
-                                                value="{{ old('date_of_loss') 
-                                                            ? old('date_of_loss') 
+                                                value="{{ $checkSheet->date_of_loss
+                                                            ? date('d-M-y', strtotime($checkSheet->date_of_loss))
                                                             : '' }}"
                                                 >
                                                 @if($errors->has('date_of_loss'))
@@ -135,8 +137,8 @@
                                                 name="unit" 
                                                 id="unit" 
                                                 class="form-control"
-                                                value="{{ old('unit') 
-                                                            ? old('unit') 
+                                                value="{{ $checkSheet->unit
+                                                            ? $checkSheet->unit
                                                             : '' }}"
                                                 >
                                                 @if($errors->has('unit'))
@@ -150,6 +152,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="card">
                     <div class="card-body bg-default-2">
                         {{-- SURAT TANDA BUKTI LAPOR POLISI --}}
@@ -160,7 +163,7 @@
                                     <input type="checkbox" 
                                     name="surat_tanda_bukti_lapor_polisi_checkbox" 
                                     id="surat_tanda_bukti_lapor_polisi_checkbox"
-                                    {{ old('surat_tanda_bukti_lapor_polisi_checkbox') 
+                                    {{ $checkSheet->surat_tanda_bukti_lapor_polisi_checkbox
                                         ? 'checked' 
                                         : '' }} 
                                     >
@@ -176,10 +179,10 @@
                                         name="tanggal_terima_surat_tanda_bukti_lapor_polisi" 
                                         id="tanggal_terima_surat_tanda_bukti_lapor_polisi" 
                                         class="form-control datepicker"
-                                        value="{{ old('tanggal_terima_surat_tanda_bukti_lapor_polisi') 
-                                                    ? old('tanggal_terima_surat_tanda_bukti_lapor_polisi') 
+                                        value="{{ $checkSheet->tanggal_terima_surat_tanda_bukti_lapor_polisi
+                                                    ? date('d-M-y', strtotime($checkSheet->tanggal_terima_surat_tanda_bukti_lapor_polisi))
                                                     : '' }}" 
-                                        {{ old('surat_tanda_bukti_lapor_polisi_checkbox')
+                                        {{ $checkSheet->surat_tanda_bukti_lapor_polisi_checkbox
                                             ? ''
                                             : 'disabled' }}
                                         >
@@ -196,10 +199,10 @@
                                         name="nomor_surat_tanda_bukti_lapor_polisi" 
                                         id="nomor_surat_tanda_bukti_lapor_polisi" 
                                         class="form-control"
-                                        value="{{ old('nomor_surat_tanda_bukti_lapor_polisi') 
-                                                    ? old('nomor_surat_tanda_bukti_lapor_polisi') 
+                                        value="{{ $checkSheet->nomor_surat_tanda_bukti_lapor_polisi
+                                                    ? date('d-M-y', strtotime($checkSheet->nomor_surat_tanda_bukti_lapor_polisi))
                                                     : '' }}" 
-                                        {{ old('surat_tanda_bukti_lapor_polisi_checkbox')
+                                        {{ $checkSheet->surat_tanda_bukti_lapor_polisi_checkbox
                                             ? ''
                                             : 'readonly' }}
                                         >
@@ -216,7 +219,7 @@
                                     <input type="checkbox" 
                                     name="kuitansi_blanko_checkbox" 
                                     id="kuitansi_blanko_checkbox"
-                                    {{ old('kuitansi_blanko_checkbox')
+                                    {{ $checkSheet->kuitansi_blanko_checkbox
                                             ? 'checked'
                                             : '' }} 
                                     >
@@ -232,10 +235,10 @@
                                         name="tanggal_terima_kuitansi_blanko" 
                                         id="tanggal_terima_kuitansi_blanko" 
                                         class="form-control datepicker" 
-                                        value="{{ old('tanggal_terima_kuitansi_blanko') 
-                                                    ? old('tanggal_terima_kuitansi_blanko') 
+                                        value="{{ $checkSheet->tanggal_terima_kuitansi_blanko
+                                                    ? date('d-M-y', strtotime($checkSheet->tanggal_terima_kuitansi_blanko))
                                                     : '' }}" 
-                                        {{ old('kuitansi_blanko_checkbox')
+                                        {{ $checkSheet->kuitansi_blanko_checkbox
                                             ? ''
                                             : 'disabled' }} 
                                         >
@@ -252,10 +255,10 @@
                                         name="nomor_kuitansi_blanko" 
                                         id="nomor_kuitansi_blanko" 
                                         class="form-control" 
-                                        value="{{ old('nomor_kuitansi_blanko') 
-                                                    ? old('nomor_kuitansi_blanko') 
+                                        value="{{ $checkSheet->nomor_kuitansi_blanko
+                                                    ? $checkSheet->nomor_kuitansi_blanko
                                                     : '' }}" 
-                                        {{ old('kuitansi_blanko_checkbox')
+                                        {{ $checkSheet->kuitansi_blanko_checkbox
                                             ? ''
                                             : 'readonly' }} 
                                         >
@@ -272,7 +275,7 @@
                                     <input type="checkbox" 
                                     name="bpkb_checkbox" 
                                     id="bpkb_checkbox"
-                                    {{ old('bpkb_checkbox')
+                                    {{ $checkSheet->bpkb_checkbox
                                             ? 'checked'
                                             : '' }}
                                     >
@@ -288,10 +291,10 @@
                                         name="tanggal_terima_bpkb" 
                                         id="tanggal_terima_bpkb" 
                                         class="form-control datepicker" 
-                                        value="{{ old('tanggal_terima_bpkb') 
-                                                    ? old('tanggal_terima_bpkb') 
+                                        value="{{ $checkSheet->tanggal_terima_bpkb
+                                                    ? date('d-M-y', strtotime($checkSheet->tanggal_terima_bpkb))
                                                     : '' }}"
-                                        {{ old('bpkb_checkbox')
+                                        {{ $checkSheet->bpkb_checkbox
                                             ? ''
                                             : 'disabled' }}
                                         >
@@ -308,10 +311,10 @@
                                         name="nomor_bpkb" 
                                         id="nomor_bpkb" 
                                         class="form-control" 
-                                        value="{{ old('nomor_bpkb') 
-                                                    ? old('nomor_bpkb') 
+                                        value="{{ $checkSheet->nomor_bpkb
+                                                    ? $checkSheet->nomor_bpkb
                                                     : '' }}"
-                                        {{ old('bpkb_checkbox')
+                                        {{ $checkSheet->bpkb_checkbox
                                             ? ''
                                             : 'readonly' }}
                                         >
@@ -328,10 +331,10 @@
                                         name="nomor_mesin_bpkb" 
                                         id="nomor_mesin_bpkb" 
                                         class="form-control" 
-                                        value="{{ old('nomor_mesin_bpkb') 
-                                                    ? old('nomor_mesin_bpkb') 
+                                        value="{{ $checkSheet->nomor_mesin_bpkb
+                                                    ? $checkSheet->nomor_mesin_bpkb
                                                     : '' }}"
-                                        {{ old('bpkb_checkbox')
+                                        {{ $checkSheet->bpkb_checkbox
                                             ? ''
                                             : 'readonly' }}
                                         >
@@ -345,10 +348,10 @@
                                         name="nomor_rangka_bpkb" 
                                         id="nomor_rangka_bpkb" 
                                         class="form-control" 
-                                        value="{{ old('nomor_rangka_bpkb') 
-                                                    ? old('nomor_rangka_bpkb') 
+                                        value="{{ $checkSheet->nomor_rangka_bpkb
+                                                    ? $checkSheet->nomor_rangka_bpkb
                                                     : '' }}"
-                                        {{ old('bpkb_checkbox')
+                                        {{ $checkSheet->bpkb_checkbox
                                             ? ''
                                             : 'readonly' }}
                                         >
@@ -365,7 +368,7 @@
                                     <input type="checkbox" 
                                     name="faktur_kendaraan_checkbox" 
                                     id="faktur_kendaraan_checkbox"
-                                    {{ old('faktur_kendaraan_checkbox')
+                                    {{ $checkSheet->faktur_kendaraan_checkbox
                                             ? 'checked'
                                             : '' }}
                                     >
@@ -381,10 +384,10 @@
                                         name="tanggal_terima_faktur_kendaraan" 
                                         id="tanggal_terima_faktur_kendaraan" 
                                         class="form-control datepicker" 
-                                        value="{{ old('tanggal_terima_faktur_kendaraan') 
-                                                    ? old('tanggal_terima_faktur_kendaraan') 
+                                        value="{{ $checkSheet->tanggal_terima_faktur_kendaraan
+                                                    ? date('d-M-y', strtotime($checkSheet->tanggal_terima_faktur_kendaraan))
                                                     : '' }}"
-                                        {{ old('faktur_kendaraan_checkbox')
+                                        {{ $checkSheet->faktur_kendaraan_checkbox
                                             ? ''
                                             : 'disabled' }}
                                         >
@@ -401,10 +404,10 @@
                                         name="keterangan_faktur_kendaraan" 
                                         id="keterangan_faktur_kendaraan" 
                                         class="form-control" 
-                                        value="{{ old('keterangan_faktur_kendaraan') 
-                                                    ? old('keterangan_faktur_kendaraan') 
+                                        value="{{ $checkSheet->keterangan_faktur_kendaraan
+                                                    ? $checkSheet->keterangan_faktur_kendaraan
                                                     : '' }}"
-                                        {{ old('faktur_kendaraan_checkbox')
+                                        {{ $checkSheet->faktur_kendaraan_checkbox
                                             ? ''
                                             : 'readonly' }}
                                         >
@@ -421,7 +424,7 @@
                                     <input type="checkbox" 
                                     name="nik_checkbox" 
                                     id="nik_checkbox"
-                                    {{ old('nik_checkbox')
+                                    {{ $checkSheet->nik_checkbox
                                             ? 'readonly'
                                             : '' }}
                                     >
@@ -437,10 +440,10 @@
                                         name="tanggal_terima_nik" 
                                         id="tanggal_terima_nik" 
                                         class="form-control datepicker" 
-                                        value="{{ old('tanggal_terima_nik') 
-                                                    ? old('tanggal_terima_nik') 
+                                        value="{{ $checkSheet->tanggal_terima_nik
+                                                    ? date('d-M-y', strtotime($checkSheet->tanggal_terima_nik))
                                                     : '' }}"
-                                        {{ old('nik_checkbox')
+                                        {{ $checkSheet->nik_checkbox
                                             ? ''
                                             : 'disabled' }}
                                         >
@@ -457,10 +460,10 @@
                                         name="nomor_nik" 
                                         id="nomor_nik" 
                                         class="form-control" 
-                                        value="{{ old('nomor_nik') 
-                                                    ? old('nomor_nik') 
+                                        value="{{ $checkSheet->nomor_nik
+                                                    ? $checkSheet->nomor_nik
                                                     : '' }}"
-                                        {{ old('nomor_nik')
+                                        {{ $checkSheet->nomor_nik
                                             ? ''
                                             : 'readonly' }}
                                         >
@@ -477,7 +480,7 @@
                                     <input type="checkbox" 
                                     name="stnk_checkbox" 
                                     id="stnk_checkbox"
-                                    {{ old('stnk_checkbox')
+                                    {{ $checkSheet->stnk_checkbox
                                             ? 'readonly'
                                             : '' }}
                                     >
@@ -493,10 +496,10 @@
                                         name="tanggal_terima_stnk" 
                                         id="tanggal_terima_stnk" 
                                         class="form-control datepicker" 
-                                        value="{{ old('tanggal_terima_stnk') 
-                                                    ? old('tanggal_terima_stnk') 
+                                        value="{{ $checkSheet->tanggal_terima_stnk
+                                                    ? date('d-M-y', strtotime($checkSheet->tanggal_terima_stnk))
                                                     : '' }}"
-                                        {{ old('stnk_checkbox')
+                                        {{ $checkSheet->stnk_checkbox
                                             ? ''
                                             : 'disabled' }}
                                         >
@@ -513,10 +516,10 @@
                                         name="nomor_stnk" 
                                         id="nomor_stnk" 
                                         class="form-control" 
-                                        value="{{ old('nomor_stnk') 
-                                                    ? old('nomor_stnk') 
+                                        value="{{ $checkSheet->nomor_stnk
+                                                    ? $checkSheet->nomor_stnk
                                                     : '' }}"
-                                        {{ old('nomor_stnk')
+                                        {{ $checkSheet->nomor_stnk
                                             ? ''
                                             : 'readonly' }}
                                         >
@@ -533,7 +536,7 @@
                                     <input type="checkbox" 
                                     name="surat_ketetapan_pajak_daerah_checkbox" 
                                     id="surat_ketetapan_pajak_daerah_checkbox"
-                                    {{ old('surat_ketetapan_pajak_daerah_checkbox')
+                                    {{ $checkSheet->surat_ketetapan_pajak_daerah_checkbox
                                             ? 'readonly'
                                             : '' }}
                                     >
@@ -549,10 +552,10 @@
                                         name="tanggal_terima_surat_ketetapan_pajak_daerah" 
                                         id="tanggal_terima_surat_ketetapan_pajak_daerah" 
                                         class="form-control datepicker" 
-                                        value="{{ old('tanggal_terima_surat_ketetapan_pajak_daerah') 
-                                                    ? old('tanggal_terima_surat_ketetapan_pajak_daerah') 
+                                        value="{{ $checkSheet->tanggal_terima_surat_ketetapan_pajak_daerah
+                                                    ? date('d-M-y', strtotime($checkSheet->tanggal_terima_surat_ketetapan_pajak_daerah))
                                                     : '' }}"
-                                        {{ old('surat_ketetapan_pajak_daerah_checkbox')
+                                        {{ $checkSheet->surat_ketetapan_pajak_daerah_checkbox
                                             ? ''
                                             : 'disabled' }}
                                         >
@@ -569,10 +572,10 @@
                                         name="nomor_surat_ketetapan_pajak_daerah" 
                                         id="nomor_surat_ketetapan_pajak_daerah" 
                                         class="form-control" 
-                                        value="{{ old('nomor_surat_ketetapan_pajak_daerah') 
-                                                    ? old('nomor_surat_ketetapan_pajak_daerah') 
+                                        value="{{ $checkSheet->nomor_surat_ketetapan_pajak_daerah
+                                                    ? $checkSheet->nomor_surat_ketetapan_pajak_daerah
                                                     : '' }}"
-                                        {{ old('surat_ketetapan_pajak_daerah_checkbox')
+                                        {{ $checkSheet->surat_ketetapan_pajak_daerah_checkbox
                                             ? ''
                                             : 'readonly' }}
                                         >
@@ -589,7 +592,7 @@
                                     <input type="checkbox" 
                                     name="kunci_kontak_checkbox" 
                                     id="kunci_kontak_checkbox"
-                                    {{ old('kunci_kontak_checkbox')
+                                    {{ $checkSheet->kunci_kontak_checkbox
                                             ? 'readonly'
                                             : '' }}
                                     >
@@ -605,10 +608,10 @@
                                         name="tanggal_terima_kunci_kontak" 
                                         id="tanggal_terima_kunci_kontak" 
                                         class="form-control datepicker" 
-                                        value="{{ old('tanggal_terima_kunci_kontak') 
-                                                    ? old('tanggal_terima_kunci_kontak') 
+                                        value="{{ $checkSheet->tanggal_terima_kunci_kontak
+                                                    ? date('d-M-y', strtotime($checkSheet->tanggal_terima_kunci_kontak))
                                                     : '' }}"
-                                        {{ old('kunci_kontak_checkbox')
+                                        {{ $checkSheet->kunci_kontak_checkbox
                                             ? ''
                                             : 'disabled' }}
                                         >
@@ -625,10 +628,10 @@
                                         name="nomor_kunci_kontak" 
                                         id="nomor_kunci_kontak" 
                                         class="form-control" 
-                                        value="{{ old('nomor_kunci_kontak') 
-                                                    ? old('nomor_kunci_kontak') 
+                                        value="{{ $checkSheet->nomor_kunci_kontak
+                                                    ? $checkSheet->nomor_kunci_kontak
                                                     : '' }}"
-                                        {{ old('kunci_kontak_checkbox')
+                                        {{ $checkSheet->kunci_kontak_checkbox
                                             ? ''
                                             : 'readonly' }}
                                         >
@@ -649,34 +652,35 @@
                                 </tr>    
                             </thead>    
                             <tbody id="appendContent">
-                                @if( count(old('judul_tambahan')) > 0 )
-                                @foreach (old('judul_tambahan') as $key => $val)
+                                {{-- {{ dd($sheetTambahan) }} --}}
+                                @if( count($sheetTambahan) > 0 )
+                                @foreach ($sheetTambahan as $key => $val)
                                 <tr class="text-center bg-white text-black">
                                     <td>
                                         <input type="text" 
                                         name="judul_tambahan[]" 
                                         class="form-control"
-                                        value="{{ old('judul_tambahan')[$key] 
-                                                    ? old('judul_tambahan')[$key] 
-                                                    : old('judul_tambahan')[$key] }}"
+                                        value="{{ $val->judul_tambahan 
+                                                    ? $val->judul_tambahan 
+                                                    : $val->judul_tambahan }}"
                                         >    
                                     </td>    
                                     <td>
                                         <input type="text" 
                                         name="tanggal_terima_tambahan[]" 
                                         class="form-control datepicker"
-                                        value="{{ old('tanggal_terima_tambahan')[$key] 
-                                                    ? old('tanggal_terima_tambahan')[$key] 
-                                                    : old('tanggal_terima_tambahan')[$key] }}"
+                                        value="{{ $val->tanggal_terima_tambahan 
+                                            ? date('d-M-y', strtotime($val->tanggal_terima_tambahan ))
+                                            : $val->tanggal_terima_tambahan }}"
                                         >    
                                     </td>    
                                     <td>
                                         <input type="text" 
                                         name="nomor_tambahan[]" 
                                         class="form-control"
-                                        value="{{ old('nomor_tambahan')[$key] 
-                                                    ? old('nomor_tambahan')[$key] 
-                                                    : old('nomor_tambahan')[$key] }}"
+                                        value="{{ $val->nomor_tambahan 
+                                            ? $val->nomor_tambahan 
+                                            : $val->nomor_tambahan }}"
                                         >    
                                     </td>
                                     <td>
@@ -693,18 +697,110 @@
                     </div>
                 </div>
 
+                
+
                 <input type="hidden" id="status" name="status">
 
-                <button type="submit" id="btn-submit" class="btn btn-success pull-right ml-2">
-                    Submit
-                </button>
-                <button type="submit" id="btn-save" class="btn btn-warning pull-right">
-                    Save
-                </button>
-            </form>
+                <div class="form-actions">
+                    @if( $userGroup == 'USER_CLAIM' )
+                        @if( $checkSheet->status == 1 )
+                            <button type="submit" id="btn-submit" class="btn btn-success pull-right ml-2">
+                                Submit
+                            </button>
+                            <button type="submit" id="btn-save" class="btn btn-warning pull-right">
+                                Save
+                            </button>
+                        @endif
+                    @elseif( $userGroup == 'ANALYST_CLAIM' || $userGroup == 'HEAD_CLAIM' )
+                        @if( $checkSheet->status == 2 || $checkSheet->status == 4 )
+                            <button type="submit" id="btn-approve" class="btn btn-success pull-right">
+                                Approve
+                            </button>
+                        @endif
+                    @elseif( $userGroup == 'USER_LEGAL' || $userGroup == 'HEAD_LEGAL' )
+                        @if( $checkSheet->status == 3 )
+                            <button type="submit" id="btn-approve" class="btn btn-success pull-right ml-2">
+                                Approve
+                            </button>
+                            <button type="submit" id="btn-reject-modal" class="btn btn-danger pull-right" data-toggle="modal" data-target="#commentModal">
+                                Reject
+                            </button>
+                        @endif
+                    @endif
+                </div>
+
+                <style>
+                    .modal-backdrop {
+                        width: 100% !important;
+                        height: 100% !important;
+                    }
+                </style>
+                <!-- Modal -->
+                <div id="commentModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">
+                                    Add Comment
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <textarea name="comment" id="comment" cols="30" rows="10" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-default" data-dismiss="modal">Close</button>
+                                <button type="submit" id="btn-reject" class="btn btn-outline-danger">Reject</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </form>
+
+    <div class="card">
+        <div class="card-header bg-primary text-white text-center">
+            <p>Log Sheet BPKB</p>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                    {{-- <tr>
+                        <th colspan="3" class="text-center"> Log Sheet BPKB </th>
+                    </tr> --}}
+                    <tr>
+                        <th>Log</th>
+                        <th>By</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($log as $key => $val)
+                        <tr>
+                            <td>
+                                {{ $val->action }}
+                                <br/>
+                                @if( $val->comment != '' )
+                                <strong>
+                                    <code>
+                                        Comment : <br/>
+                                        {{ $val->comment }}
+                                    </code>
+                                </strong>
+                                @endif
+                            </td>
+                            <td> {{ $val->user_name }} </td>
+                            <td> {{ $val->created_at }} </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
-    
 @endsection
 @section('script')
 <script>
@@ -715,19 +811,37 @@
             todayHighlight: true,
         });
     });
-    
+
     $('body').on('click', '#btn-save', function(e){
         e.preventDefault();
-        let nextId = '{{ $Status->orderBy("order", "asc")->get()[0]->id }}';
+        let nextId = '{{ $Status->first()->id }}';
         $('#status').val(nextId);
         $('#form-sheet').submit();
     });
 
     $('body').on('click', '#btn-submit', function(e){
         e.preventDefault();
-        let nextId = '{{ $Status->orderBy("order", "asc")->get()[1]->id }}';
+        let nextId = '{{ $checkSheet->GetStatus->next_id }}';
         $('#status').val(nextId);
         $('#form-sheet').submit();
+    });
+
+    $('body').on('click', '#btn-approve', function(e){
+        e.preventDefault();
+        let nextId = '{{ $checkSheet->GetStatus->next_id }}';
+        $('#status').val(nextId);
+        $('#form-sheet').submit();
+    });
+
+    $('body').on('click', '#btn-reject', function(e){
+        e.preventDefault();
+        let backId = '{{ $checkSheet->GetStatus->back_id }}';
+        $('#status').val(backId);
+        $('#form-sheet').submit();
+    });
+
+    $('body').on('click', '#btn-reject-modal', function(e){
+        e.preventDefault();
     });
 
     $('body').on('click', '#btn-add', function(e){
@@ -785,12 +899,12 @@
         if( $(this).prop('checked') == true ){
             $('#tanggal_terima_bpkb').attr('disabled', false);
             $('#nomor_bpkb').attr('readonly', false);
-            $('#nomor_mesin_bpkb').attr('readonly', false);
+            $('#nomor_mesin_bpkb').attr('disabled', false);
             $('#nomor_rangka_bpkb').attr('readonly', false);
         } else {
             $('#tanggal_terima_bpkb').attr('disabled', true);
             $('#nomor_bpkb').attr('readonly', true);
-            $('#nomor_mesin_bpkb').attr('readonly', true);
+            $('#nomor_mesin_bpkb').attr('disabled', true);
             $('#nomor_rangka_bpkb').attr('readonly', true);
         }
     });
@@ -798,10 +912,10 @@
     $('#faktur_kendaraan_checkbox').change(function(){
         if( $(this).prop('checked') == true ){
             $('#tanggal_terima_faktur_kendaraan').attr('disabled', false);
-            $('#keterangan_faktur_kendaraan').attr('readonly', false);
+            $('#nomor_faktur_kendaraan').attr('readonly', false);
         } else {
             $('#tanggal_terima_faktur_kendaraan').attr('disabled', true);
-            $('#keterangan_faktur_kendaraan').attr('readonly', true);
+            $('#nomor_faktur_kendaraan').attr('readonly', true);
         }
     });
 
@@ -818,30 +932,30 @@
     $('#stnk_checkbox').change(function(){
         if( $(this).prop('checked') == true ){
             $('#tanggal_terima_stnk').attr('disabled', false);
-            $('#nomor_stnk').attr('readonly', false);
+            $('#nomor_stnk').attr('disabled', false);
         } else {
             $('#tanggal_terima_stnk').attr('disabled', true);
-            $('#nomor_stnk').attr('readonly', true);
+            $('#nomor_stnk').attr('disabled', true);
         }
     });
 
     $('#surat_ketetapan_pajak_daerah_checkbox').change(function(){
         if( $(this).prop('checked') == true ){
             $('#tanggal_terima_surat_ketetapan_pajak_daerah').attr('disabled', false);
-            $('#nomor_surat_ketetapan_pajak_daerah').attr('readonly', false);
+            $('#nomor_surat_ketetapan_pajak_daerah').attr('disabled', false);
         } else {
             $('#tanggal_terima_surat_ketetapan_pajak_daerah').attr('disabled', true);
-            $('#nomor_surat_ketetapan_pajak_daerah').attr('readonly', true);
+            $('#nomor_surat_ketetapan_pajak_daerah').attr('disabled', true);
         }
     });
 
     $('#kunci_kontak_checkbox').change(function(){
         if( $(this).prop('checked') == true ){
             $('#tanggal_terima_kunci_kontak').attr('disabled', false);
-            $('#nomor_kunci_kontak').attr('readonly', false);
+            $('#nomor_kunci_kontak').attr('disabled', false);
         } else {
             $('#tanggal_terima_kunci_kontak').attr('disabled', true);
-            $('#nomor_kunci_kontak').attr('readonly', true);
+            $('#nomor_kunci_kontak').attr('disabled', true);
         }
     });
     /* FUNGSI CHECKBOX END */

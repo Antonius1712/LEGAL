@@ -13,3 +13,19 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 .bg-default-2 {
 	background-color:#f8f8f8;
 }
+
+.error {
+	color:red;
+	font-size:12px;
+	font-style:italic;
+}
+
+/*  !!UNTUK PDF SHEET LEGAL!! */
+
+.header-quotation {
+	width: 100%;
+}
+
+.borderless td, .borderless tr {
+    border: none;
+}
