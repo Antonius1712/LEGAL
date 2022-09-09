@@ -20,16 +20,16 @@
     {{-- !DIBACA BAIK BAIK --}}
     {{-- !PUTRI MINTA SETELAH LOGIN LANGSUNG KE MENU CHECKSHEET TIDAK PERLU ADA HOMEPAGE. --}}
     {{-- !9 SEPTEMBER 2022 --}}
-    {{-- <div class="main-menu-content">
+    <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" nav-item">
+            {{-- <li class=" nav-item">
                 <a href="{{ Route('check-sheet-bpkb.index') }}">
                     <i class="feather icon-file-plus"></i>
                     <span class="menu-title">
                         Check Sheet BPKB
                     </span>
                 </a>
-            </li>
+            </li> --}}
         </ul>
-    </div> --}}
+    </div>
 </div>
