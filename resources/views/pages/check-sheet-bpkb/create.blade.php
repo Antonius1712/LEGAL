@@ -114,7 +114,7 @@
                                                 <input type="text" 
                                                 name="date_of_loss" 
                                                 id="date_of_loss" 
-                                                class="form-control"
+                                                class="form-control datepicker"
                                                 value="{{ old('date_of_loss') 
                                                             ? old('date_of_loss') 
                                                             : '' }}"

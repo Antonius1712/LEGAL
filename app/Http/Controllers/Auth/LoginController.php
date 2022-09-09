@@ -32,7 +32,11 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+
+    // !DIBACA BAIK BAIK.
+    // !PUTRI MINTA SETELAH LOGIN LANGSUNG KE MENU CHECKSHEET TIDAK PERLU ADA HOMEPAGE.
+    // !9 SEPTEMBER 2022
+    protected $redirectTo = '/check-sheet-bpkb';
 
     /**
      * Create a new controller instance.
@@ -105,7 +109,7 @@ class LoginController extends Controller
 
             /* REDIRECT TO HOMEPAGE IF USER EXIST AND HAVE ACCESS TO APP LEGAL */
             Auth()->login($lgi);
-            return redirect()->route('home');
+            return redirect()->route('check-sheet-bpkb.index');
             
         }else{
             /* THROW ERROR IF CREDENTIAL NOT MATCH */

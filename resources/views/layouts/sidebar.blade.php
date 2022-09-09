@@ -2,7 +2,7 @@
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item mr-auto">
-                <a class="navbar-brand" href="../../../html/ltr/vertical-menu-template/index.html">
+                <a class="navbar-brand" href="{{ Route('check-sheet-bpkb.index') }}">
                     <i class="feather icon-file-text"></i>
                     <h2 class="brand-text mb-0">Legal</h2>
                 </a>
@@ -16,7 +16,11 @@
         </ul>
     </div>
     <div class="shadow-bottom"></div>
-    <div class="main-menu-content">
+
+    {{-- !DIBACA BAIK BAIK --}}
+    {{-- !PUTRI MINTA SETELAH LOGIN LANGSUNG KE MENU CHECKSHEET TIDAK PERLU ADA HOMEPAGE. --}}
+    {{-- !9 SEPTEMBER 2022 --}}
+    {{-- <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class=" nav-item">
                 <a href="{{ Route('check-sheet-bpkb.index') }}">
@@ -27,5 +31,5 @@
                 </a>
             </li>
         </ul>
-    </div>
+    </div> --}}
 </div>
