@@ -718,14 +718,14 @@
     
     $('body').on('click', '#btn-save', function(e){
         e.preventDefault();
-        let nextId = '{{ $Status->orderBy("order", "asc")->get()[0]->id }}';
+        let nextId = '{{ $Status->get()[0]->id }}';
         $('#status').val(nextId);
         $('#form-sheet').submit();
     });
 
     $('body').on('click', '#btn-submit', function(e){
         e.preventDefault();
-        let nextId = '{{ $Status->orderBy("order", "asc")->get()[1]->id }}';
+        let nextId = '{{ $Status->get()[1]->id }}';
         $('#status').val(nextId);
         $('#form-sheet').submit();
     });
