@@ -20,60 +20,104 @@
                         </div>
                         <div class="card-body bg-default-2">
                             <div class="row">
-                                <div class="col-xs-12 col-md-12 col-lg-4">
+                                <div class="col-xs-12 col-md-12 col-lg-3">
                                     <div class="form-group">
-                                        <label>No Claim.</label>
+                                        <label>Nomor BPKB</label>
+                                        <input type="text" name="no_bpkb" id="no_bpkb" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-12 col-lg-3">
+                                    <div class="form-group">
+                                        <label>Nomor Claim</label>
                                         <input type="text" name="no_claim" id="no_claim" class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-md-12 col-lg-4">
+                                <div class="col-xs-12 col-md-12 col-lg-3">
                                     <div class="form-group">
-                                        <label>No Polis.</label>
+                                        <label>Nomor Polis</label>
                                         <input type="text" name="no_polis" id="no_polis" class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-md-12 col-lg-4">
+                                <div class="col-xs-12 col-md-12 col-lg-3">
+                                    <div class="form-group">
+                                        <label>Nama Tertanggung</label>
+                                        <input type="text" name="nama_tertanggung" id="nama_tertanggung" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="clearfix"></div>
+
+                                <div class="col-xs-12 col-md-12 col-lg-3">
+                                    <div class="form-group">
+                                        <label>Tanggal Pengajuan</label>
+                                        <input type="text" name="tanggal_pengajuan" id="tanggal_pengajuan" class="form-control datepicker">
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-md-12 col-lg-3">
+                                    <div class="form-group">
+                                        <label>TAT</label>
+                                        <input type="text" name="tat" id="tat" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-md-12 col-lg-3">
                                     <div class="form-group">
                                         <label>User</label>
                                         <input type="text" name="user" id="user" class="form-control">
                                     </div>
                                 </div>
 
+                                <div class="col-xs-12 col-md-12 col-lg-3">
+                                    <div class="form-group">
+                                        <label>Status</label>
+                                        <input type="text" name="status" id="status" class="form-control">
+                                    </div>
+                                </div>
+
                                 <div class="clearfix"></div>
 
-                                <div class="col-xs-12 col-md-12 col-lg-4">
+                                <div class="col-xs-12 col-md-12 col-lg-3">
                                     <div class="form-group">
                                         <label>Unit</label>
                                         <input type="text" name="unit" id="unit" class="form-control">
                                     </div>
                                 </div>
 
-                                <div class="col-xs-12 col-md-12 col-lg-4">
+                                <div class="col-xs-12 col-md-12 col-lg-3">
                                     <div class="form-group">
-                                        <label>Tahun</label>
+                                        <label>Tahun Kendaraan</label>
                                         <input type="text" name="tahun" id="tahun" class="form-control">
                                     </div>
                                 </div>
 
-                                <div class="col-xs-12 col-md-12 col-lg-4">
+                                <div class="col-xs-12 col-md-12 col-lg-3">
                                     <div class="form-group">
-                                        <label>Plat Kendaraan</label>
-                                        <input type="text" name="plat" id="plat" class="form-control">
+                                        <label>Nomor Polisi</label>
+                                        <input type="text" name="nomor_polisi" id="nomor_polisi" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-md-12 col-lg-3">
+                                    <div class="form-group">
+                                        <label>Nomor Rangka</label>
+                                        <input type="text" name="no_rangka" id="no_rangka" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="clearfix"></div>
-                                
-                                <div class="col-xs-12 col-md-12 col-lg-4">
+
+                                <div class="col-xs-12 col-md-12 col-lg-3">
                                     <div class="form-group">
-                                        <label>Nama Tertanggung</label>
-                                        <input type="text" name="nama_tertanggung" id="nama_tertanggung" class="form-control">
+                                        <label>Merk</label>
+                                        <input type="text" name="merk" id="merk" class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-md-12 col-lg-4">
+
+                                <div class="col-xs-12 col-md-12 col-lg-3">
                                     <div class="form-group">
-                                        <label>Status</label>
-                                        <input type="text" name="status" id="status" class="form-control">
+                                        <label>Date of Loss</label>
+                                        <input type="text" name="date_of_loss" id="date_of_loss" class="form-control datepicker">
                                     </div>
                                 </div>
 
@@ -93,7 +137,7 @@
                         @endif
                         <table class="table table-hover" id="DataTable" style="width:100%;">
                             <thead>
-                                <tr class="bg-primary text-white text-center">
+                                <tr class="bg-primary text-white">
                                     <th>Check Sheet ID</th>
                                     <th>No. BPKB</th>
                                     <th>No. Klaim</th>
@@ -121,7 +165,7 @@
                                         <td> {{ $val->policy_no }} </td>
                                         <td> {{ date('d-M-y H:i:s', strtotime($val->date_of_loss)) }} </td>
                                         <td> {{ $val->insured }} </td>
-                                        <td> {{ $val->created_at }} </td>
+                                        <td> {{ date('d-M-y H:i:s', strtotime($val->created_at)) }} </td>
                                         <td> {{ $val->unit }} </td>
                                         <td> {{ $val->tahun_kendaraan }} </td>
                                         <td> {{ $val->nomor_mesin }} </td>
@@ -205,6 +249,12 @@
 @section('script')
     <script type="text/javascript">
         $(document).ready(function() {
+            $(".datepicker").datepicker({
+                format: 'dd-M-yy',
+                autoclose: true,
+                todayHighlight: true,
+            });
+
             var table = $('#DataTable').DataTable({
                 searching : false,
                 dom: 'Bfrtip',
@@ -254,14 +304,28 @@
                 $('#DataTable_filter').remove();
             }, 5);
 
+            let no_bpkb = $('#no_bpkb').val();
             let no_claim = $('#no_claim').val();
             let no_polis = $('#no_polis').val();
+            let nama_tertanggung = $('#nama_tertanggung').val();
+
+            let tanggal_pengajuan = $('#tanggal_pengajuan').val();
+            let tat = $('#tat').val();
             let user = $('#user').val();
+            let status = $('#status').val();
+
             let unit = $('#unit').val();
             let tahun = $('#tahun').val();
-            let plat = $('#plat').val();
-            let nama_tertanggung = $('#nama_tertanggung').val();
-            let status = $('#status').val();
+            let nomor_polisi = $('#nomor_polisi').val();
+            let no_rangka = $('#no_rangka').val();
+
+            let merk = $('#merk').val();
+            let date_of_loss = $('#date_of_loss').val();
+
+            /* ?FILTER BARIS 1 */
+            if( no_bpkb != '' ){
+                table.column(1).search(no_bpkb).draw();
+            }
 
             if( no_claim != '' ){
                 table.column(2).search(no_claim).draw();
@@ -270,11 +334,30 @@
             if( no_polis != '' ){
                 table.column(3).search(no_polis).draw();
             }
+
+            if( nama_tertanggung != '' ){
+                table.column(5).search(nama_tertanggung).draw();
+            }
             
+            /* ?FILTER BARIS 2 */
+            if( tanggal_pengajuan != '' ){
+                // tanggal_pengajuan = formatDate(tanggal_pengajuan);
+                table.column(6).search(tanggal_pengajuan).draw();
+            }
+
+            if( tat != '' ){
+                table.column(14).search(tat).draw();
+            }
+
             if( user != '' ){
                 table.column(12).search(user).draw();
             }
 
+            if( status != '' ){
+                table.column(13).search(status).draw();
+            }
+
+            /* ?FILTER BARIS 3 */
             if( unit != '' ){
                 table.column(7).search(unit).draw();
             }
@@ -283,16 +366,21 @@
                 table.column(8).search(tahun).draw();
             }
 
-            if( plat != '' ){
-                table.column(10).search(plat).draw();
+            if( nomor_polisi != '' ){
+                table.column(10).search(nomor_polisi).draw();
             }
 
-            if( nama_tertanggung != '' ){
-                table.column(5).search(nama_tertanggung).draw();
+            if( no_rangka != '' ){
+                table.column(11).search(no_rangka).draw();
             }
 
-            if( status != '' ){
-                table.column(13).search(status).draw();
+            /* ?FILTER BARIS 4 */
+            if( merk != '' ){
+                table.column(7).search(merk).draw();
+            }
+
+            if( date_of_loss != '' ){
+                table.column(4).search(date_of_loss).draw();
             }
             
             setTimeout(() => {
@@ -303,6 +391,20 @@
 
         function ResetDataTable(){
             $('#DataTable').DataTable().destroy();
+        }
+
+        function formatDate(date) {
+            var d = new Date(date),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2) 
+                month = '0' + month;
+            if (day.length < 2) 
+                day = '0' + day;
+
+            return [year, month, day].join('-');
         }
     </script>
 @endsection

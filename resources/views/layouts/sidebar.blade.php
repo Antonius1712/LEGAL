@@ -22,6 +22,7 @@
     {{-- !9 SEPTEMBER 2022 --}}
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+            {{-- *DIATAS JGN DI COMMENT, BIAR BISA DI TOGGLE HIDE SIDEBAR. --}}
             {{-- <li class=" nav-item">
                 <a href="{{ Route('check-sheet-bpkb.index') }}">
                     <i class="feather icon-file-plus"></i>

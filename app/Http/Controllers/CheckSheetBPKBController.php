@@ -130,6 +130,7 @@ class CheckSheetBPKBController extends Controller
      */
     public function store(SheetBPKBRequest $request)
     {
+        // dd($request->all());
         $sheet = $this->SheetBPKBRepo->SaveSheetBPKB($request);
         if( $sheet ){
             $this->SheetBPKBRepo->SaveLog($sheet);

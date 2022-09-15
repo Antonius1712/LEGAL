@@ -3,6 +3,13 @@
     Form Check Sheet BPKB
 @endsection
 @section('content')
+    @if( $userGroup == 'HEAD_LEGAL' )
+        @php( $readonly = 'readonly' )
+        @php( $disabled = 'disabled' )
+    @else
+        @php( $readonly = '' )
+        @php( $disabled = '' )
+    @endif
     <form id="form-sheet" action="{{ Route('check-sheet-bpkb.update', $checkSheet->id) }}" method="post">
         {{ csrf_field() }}
         {{ method_field('PUT') }}
@@ -32,6 +39,7 @@
                                                 value="{{ $checkSheet->no_claim
                                                             ? $checkSheet->no_claim
                                                             : '' }}"
+                                                {{ $readonly }}
                                                 >
                                                 @if($errors->has('no_claim'))
                                                     <div class="error">{{ $errors->first('no_claim') }}</div>
@@ -48,6 +56,7 @@
                                                 value="{{ $checkSheet->tahun_kendaraan
                                                             ? $checkSheet->tahun_kendaraan
                                                             : '' }}"
+                                                {{ $readonly }}
                                                 >
                                                 @if($errors->has('tahun_kendaraan'))
                                                     <div class="error">{{ $errors->first('tahun_kendaraan') }}</div>
@@ -68,6 +77,7 @@
                                                 value="{{ $checkSheet->no_policy
                                                             ? $checkSheet->no_policy
                                                             : '' }}"
+                                                {{ $readonly }}
                                                 >
                                                 @if($errors->has('no_policy'))
                                                     <div class="error">{{ $errors->first('no_policy') }}</div>
@@ -84,6 +94,7 @@
                                                 value="{{ $checkSheet->nomor_polisi
                                                             ? $checkSheet->nomor_polisi
                                                             : '' }}"
+                                                {{ $readonly }}
                                                 >
                                                 @if($errors->has('nomor_polisi'))
                                                     <div class="error">{{ $errors->first('nomor_polisi') }}</div>
@@ -104,6 +115,7 @@
                                                 value="{{ $checkSheet->insured
                                                             ? $checkSheet->insured
                                                             : '' }}"
+                                                {{ $readonly }}
                                                 >
                                                 @if($errors->has('insured'))
                                                     <div class="error">{{ $errors->first('insured') }}</div>
@@ -120,6 +132,7 @@
                                                 value="{{ $checkSheet->date_of_loss
                                                             ? date('d-M-y', strtotime($checkSheet->date_of_loss))
                                                             : '' }}"
+                                                {{ $readonly }}
                                                 >
                                                 @if($errors->has('date_of_loss'))
                                                     <div class="error">{{ $errors->first('date_of_loss') }}</div>
@@ -140,6 +153,7 @@
                                                 value="{{ $checkSheet->unit
                                                             ? $checkSheet->unit
                                                             : '' }}"
+                                                {{ $readonly }}
                                                 >
                                                 @if($errors->has('unit'))
                                                     <div class="error">{{ $errors->first('unit') }}</div>
@@ -166,6 +180,7 @@
                                     {{ $checkSheet->surat_tanda_bukti_lapor_polisi_checkbox
                                         ? 'checked' 
                                         : '' }} 
+                                    {{ $disabled }}
                                     >
                                 </div>
                             </div>
@@ -185,6 +200,7 @@
                                         {{ $checkSheet->surat_tanda_bukti_lapor_polisi_checkbox
                                             ? ''
                                             : 'disabled' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -205,6 +221,7 @@
                                         {{ $checkSheet->surat_tanda_bukti_lapor_polisi_checkbox
                                             ? ''
                                             : 'readonly' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -222,6 +239,7 @@
                                     {{ $checkSheet->kuitansi_blanko_checkbox
                                             ? 'checked'
                                             : '' }} 
+                                    {{ $disabled }}
                                     >
                                 </div>
                             </div>
@@ -241,6 +259,7 @@
                                         {{ $checkSheet->kuitansi_blanko_checkbox
                                             ? ''
                                             : 'disabled' }} 
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -261,6 +280,7 @@
                                         {{ $checkSheet->kuitansi_blanko_checkbox
                                             ? ''
                                             : 'readonly' }} 
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -278,6 +298,7 @@
                                     {{ $checkSheet->bpkb_checkbox
                                             ? 'checked'
                                             : '' }}
+                                    {{ $disabled }}
                                     >
                                 </div>
                             </div>
@@ -297,6 +318,7 @@
                                         {{ $checkSheet->bpkb_checkbox
                                             ? ''
                                             : 'disabled' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -317,6 +339,7 @@
                                         {{ $checkSheet->bpkb_checkbox
                                             ? ''
                                             : 'readonly' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -337,6 +360,7 @@
                                         {{ $checkSheet->bpkb_checkbox
                                             ? ''
                                             : 'readonly' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
 
@@ -354,6 +378,7 @@
                                         {{ $checkSheet->bpkb_checkbox
                                             ? ''
                                             : 'readonly' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -371,6 +396,7 @@
                                     {{ $checkSheet->faktur_kendaraan_checkbox
                                             ? 'checked'
                                             : '' }}
+                                    {{ $disabled }}
                                     >
                                 </div>
                             </div>
@@ -390,6 +416,7 @@
                                         {{ $checkSheet->faktur_kendaraan_checkbox
                                             ? ''
                                             : 'disabled' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -410,6 +437,7 @@
                                         {{ $checkSheet->faktur_kendaraan_checkbox
                                             ? ''
                                             : 'readonly' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -427,6 +455,7 @@
                                     {{ $checkSheet->nik_checkbox
                                             ? 'readonly'
                                             : '' }}
+                                    {{ $disabled }}
                                     >
                                 </div>
                             </div>
@@ -446,6 +475,7 @@
                                         {{ $checkSheet->nik_checkbox
                                             ? ''
                                             : 'disabled' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -466,6 +496,7 @@
                                         {{ $checkSheet->nomor_nik
                                             ? ''
                                             : 'readonly' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -483,6 +514,7 @@
                                     {{ $checkSheet->stnk_checkbox
                                             ? 'readonly'
                                             : '' }}
+                                    {{ $disabled }}
                                     >
                                 </div>
                             </div>
@@ -502,6 +534,7 @@
                                         {{ $checkSheet->stnk_checkbox
                                             ? ''
                                             : 'disabled' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -522,6 +555,7 @@
                                         {{ $checkSheet->nomor_stnk
                                             ? ''
                                             : 'readonly' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -539,6 +573,7 @@
                                     {{ $checkSheet->surat_ketetapan_pajak_daerah_checkbox
                                             ? 'readonly'
                                             : '' }}
+                                    {{ $disabled }}
                                     >
                                 </div>
                             </div>
@@ -558,6 +593,7 @@
                                         {{ $checkSheet->surat_ketetapan_pajak_daerah_checkbox
                                             ? ''
                                             : 'disabled' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -578,6 +614,7 @@
                                         {{ $checkSheet->surat_ketetapan_pajak_daerah_checkbox
                                             ? ''
                                             : 'readonly' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -595,6 +632,7 @@
                                     {{ $checkSheet->kunci_kontak_checkbox
                                             ? 'readonly'
                                             : '' }}
+                                    {{ $disabled }}
                                     >
                                 </div>
                             </div>
@@ -614,6 +652,7 @@
                                         {{ $checkSheet->kunci_kontak_checkbox
                                             ? ''
                                             : 'disabled' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -634,6 +673,7 @@
                                         {{ $checkSheet->kunci_kontak_checkbox
                                             ? ''
                                             : 'readonly' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -648,7 +688,9 @@
                                     <th> Judul </th>    
                                     <th> Tanggal Terima </th>    
                                     <th> Nomor </th>    
-                                    <th> Hapus </th>    
+                                    @if( $userGroup != 'HEAD_LEGAL' )
+                                        <th> Hapus </th>    
+                                    @endif
                                 </tr>    
                             </thead>    
                             <tbody id="appendContent">
@@ -663,6 +705,7 @@
                                         value="{{ $val->judul_tambahan 
                                                     ? $val->judul_tambahan 
                                                     : $val->judul_tambahan }}"
+                                        {{ $readonly }}
                                         >    
                                     </td>    
                                     <td>
@@ -672,6 +715,7 @@
                                         value="{{ $val->tanggal_terima_tambahan 
                                             ? date('d-M-y', strtotime($val->tanggal_terima_tambahan ))
                                             : $val->tanggal_terima_tambahan }}"
+                                        {{ $readonly }}
                                         >    
                                     </td>    
                                     <td>
@@ -681,14 +725,17 @@
                                         value="{{ $val->nomor_tambahan 
                                             ? $val->nomor_tambahan 
                                             : $val->nomor_tambahan }}"
+                                        {{ $readonly }}
                                         >    
                                     </td>
+                                    @if( $userGroup != 'HEAD_LEGAL' )
                                     <td>
                                         <button type="button" 
                                         class="btn btn-danger btn-hapus">
                                             Hapus
                                         </button>    
                                     </td>
+                                    @endif
                                 </tr>
                                 @endforeach
                                 @endif

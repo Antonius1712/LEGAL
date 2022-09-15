@@ -183,6 +183,9 @@
                                             ? ''
                                             : 'disabled' }}
                                         >
+                                        @if($errors->has('tanggal_terima_surat_tanda_bukti_lapor_polisi'))
+                                            <div class="error">{{ $errors->first('tanggal_terima_surat_tanda_bukti_lapor_polisi') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -203,6 +206,9 @@
                                             ? ''
                                             : 'readonly' }}
                                         >
+                                        @if($errors->has('nomor_surat_tanda_bukti_lapor_polisi'))
+                                            <div class="error">{{ $errors->first('nomor_surat_tanda_bukti_lapor_polisi') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -239,6 +245,9 @@
                                             ? ''
                                             : 'disabled' }} 
                                         >
+                                        @if($errors->has('tanggal_terima_kuitansi_blanko'))
+                                            <div class="error">{{ $errors->first('tanggal_terima_kuitansi_blanko') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -259,6 +268,9 @@
                                             ? ''
                                             : 'readonly' }} 
                                         >
+                                        @if($errors->has('nomor_kuitansi_blanko'))
+                                            <div class="error">{{ $errors->first('nomor_kuitansi_blanko') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -295,6 +307,9 @@
                                             ? ''
                                             : 'disabled' }}
                                         >
+                                        @if($errors->has('tanggal_terima_bpkb'))
+                                            <div class="error">{{ $errors->first('tanggal_terima_bpkb') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -315,6 +330,9 @@
                                             ? ''
                                             : 'readonly' }}
                                         >
+                                        @if($errors->has('nomor_bpkb'))
+                                            <div class="error">{{ $errors->first('nomor_bpkb') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -335,6 +353,9 @@
                                             ? ''
                                             : 'readonly' }}
                                         >
+                                        @if($errors->has('nomor_mesin_bpkb'))
+                                            <div class="error">{{ $errors->first('nomor_mesin_bpkb') }}</div>
+                                        @endif
                                     </div>
 
                                     <div class="col-xs-12 col-md-12 col-lg-2">
@@ -352,6 +373,9 @@
                                             ? ''
                                             : 'readonly' }}
                                         >
+                                        @if($errors->has('nomor_rangka_bpkb'))
+                                            <div class="error">{{ $errors->first('nomor_rangka_bpkb') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -388,6 +412,9 @@
                                             ? ''
                                             : 'disabled' }}
                                         >
+                                        @if($errors->has('tanggal_terima_faktur_kendaraan'))
+                                            <div class="error">{{ $errors->first('tanggal_terima_faktur_kendaraan') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -408,6 +435,9 @@
                                             ? ''
                                             : 'readonly' }}
                                         >
+                                        @if($errors->has('keterangan_faktur_kendaraan'))
+                                            <div class="error">{{ $errors->first('keterangan_faktur_kendaraan') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -444,6 +474,9 @@
                                             ? ''
                                             : 'disabled' }}
                                         >
+                                        @if($errors->has('tanggal_terima_nik'))
+                                            <div class="error">{{ $errors->first('tanggal_terima_nik') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -464,6 +497,9 @@
                                             ? ''
                                             : 'readonly' }}
                                         >
+                                        @if($errors->has('nomor_nik'))
+                                            <div class="error">{{ $errors->first('nomor_nik') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -500,6 +536,9 @@
                                             ? ''
                                             : 'disabled' }}
                                         >
+                                        @if($errors->has('tanggal_terima_stnk'))
+                                            <div class="error">{{ $errors->first('tanggal_terima_stnk') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -520,6 +559,9 @@
                                             ? ''
                                             : 'readonly' }}
                                         >
+                                        @if($errors->has('nomor_stnk'))
+                                            <div class="error">{{ $errors->first('nomor_stnk') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -556,6 +598,9 @@
                                             ? ''
                                             : 'disabled' }}
                                         >
+                                        @if($errors->has('tanggal_terima_surat_ketetapan_pajak_daerah'))
+                                            <div class="error">{{ $errors->first('tanggal_terima_surat_ketetapan_pajak_daerah') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -576,6 +621,9 @@
                                             ? ''
                                             : 'readonly' }}
                                         >
+                                        @if($errors->has('nomor_surat_ketetapan_pajak_daerah'))
+                                            <div class="error">{{ $errors->first('nomor_surat_ketetapan_pajak_daerah') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -612,6 +660,9 @@
                                             ? ''
                                             : 'disabled' }}
                                         >
+                                        @if($errors->has('tanggal_terima_kunci_kontak'))
+                                            <div class="error">{{ $errors->first('tanggal_terima_kunci_kontak') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -632,6 +683,9 @@
                                             ? ''
                                             : 'readonly' }}
                                         >
+                                        @if($errors->has('nomor_kunci_kontak'))
+                                            <div class="error">{{ $errors->first('nomor_kunci_kontak') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -659,7 +713,11 @@
                                         value="{{ old('judul_tambahan')[$key] 
                                                     ? old('judul_tambahan')[$key] 
                                                     : old('judul_tambahan')[$key] }}"
-                                        >    
+                                        required
+                                        >
+                                        @if($errors->has('judul_tambahan.'.$key))
+                                            <div class="error">{{ $errors->first('judul_tambahan.'.$key) }}</div>
+                                        @endif
                                     </td>    
                                     <td>
                                         <input type="text" 
@@ -668,7 +726,11 @@
                                         value="{{ old('tanggal_terima_tambahan')[$key] 
                                                     ? old('tanggal_terima_tambahan')[$key] 
                                                     : old('tanggal_terima_tambahan')[$key] }}"
+                                        required
                                         >    
+                                        @if($errors->has('tanggal_terima_tambahan.'.$key))
+                                            <div class="error">{{ $errors->first('tanggal_terima_tambahan.'.$key) }}</div>
+                                        @endif
                                     </td>    
                                     <td>
                                         <input type="text" 
@@ -677,7 +739,11 @@
                                         value="{{ old('nomor_tambahan')[$key] 
                                                     ? old('nomor_tambahan')[$key] 
                                                     : old('nomor_tambahan')[$key] }}"
-                                        >    
+                                        required
+                                        >   
+                                        @if($errors->has('nomor_tambahan.'.$key))
+                                            <div class="error">{{ $errors->first('nomor_tambahan.'.$key) }}</div>
+                                        @endif 
                                     </td>
                                     <td>
                                         <button type="button" 
@@ -708,6 +774,7 @@
 @endsection
 @section('script')
 <script>
+    var count = 0;
     $(document).ready(function(){
         $(".datepicker").datepicker({
             format: 'dd-M-yy',
@@ -732,28 +799,32 @@
 
     $('body').on('click', '#btn-add', function(e){
         e.preventDefault();
-        let appendContent = `
-            <tr class="text-center bg-white text-black">
-                <td>
-                    <input type="text" name="judul_tambahan[]" class="form-control">    
-                </td>    
-                <td>
-                    <input type="text" name="tanggal_terima_tambahan[]" class="form-control datepicker">    
-                </td>    
-                <td>
-                    <input type="text" name="nomor_tambahan[]" class="form-control">    
-                </td>
-                <td>
-                    <button type="button" class="btn btn-danger btn-hapus">Hapus</button>    
-                </td>
-            </tr>
-        `;
-        $('#appendContent').append(appendContent);
-        $('#appendContent').find('[name^=tanggal_terima]').datepicker({
-            format: 'dd-M-yy',
-            autoclose: true,
-            todayHighlight: true,
-        });
+        if( $('#appendContent').children().length <= 9 ){
+            let appendContent = `
+                <tr class="text-center bg-white text-black">
+                    <td>
+                        <input type="text" name="judul_tambahan[]" class="form-control" required>    
+                    </td>    
+                    <td>
+                        <input type="text" name="tanggal_terima_tambahan[]" class="form-control datepicker" required>    
+                    </td>    
+                    <td>
+                        <input type="text" name="nomor_tambahan[]" class="form-control" required>    
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-hapus">Hapus</button>    
+                    </td>
+                </tr>
+            `;
+            $('#appendContent').append(appendContent);
+            $('#appendContent').find('[name^=tanggal_terima]').datepicker({
+                format: 'dd-M-yy',
+                autoclose: true,
+                todayHighlight: true,
+            });
+        }else{
+            alert('Maximal 10 Data tambahan.');
+        }
     });
 
     $('body').on('click', '.btn-hapus', function(){
