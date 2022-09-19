@@ -31,7 +31,7 @@ class generate_pdf_legal extends Command
     {
         parent::__construct();
         $this->publicPath = env('PUBLIC_PATH');
-        $this->baseUrl = env('APP_URL');
+        $this->baseUrl = env('APP_URL_PDF_LEGAL');
     }
 
     /**
