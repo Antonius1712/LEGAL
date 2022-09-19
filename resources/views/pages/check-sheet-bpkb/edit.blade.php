@@ -3,7 +3,7 @@
     Form Check Sheet BPKB
 @endsection
 @section('content')
-    @if( $userGroup == 'HEAD_LEGAL' )
+    @if( $userGroup == 'HEAD_LEGAL' || $userGroup == 'USER_LEGAL' )
         @php( $readonly = 'readonly' )
         @php( $disabled = 'disabled' )
         @php( $display = 'none' )
@@ -218,7 +218,7 @@
                                         id="nomor_surat_tanda_bukti_lapor_polisi" 
                                         class="form-control"
                                         value="{{ $checkSheet->nomor_surat_tanda_bukti_lapor_polisi
-                                                    ? date('d-M-y', strtotime($checkSheet->nomor_surat_tanda_bukti_lapor_polisi))
+                                                    ? $checkSheet->nomor_surat_tanda_bukti_lapor_polisi
                                                     : '' }}" 
                                         {{ $checkSheet->surat_tanda_bukti_lapor_polisi_checkbox
                                             ? ''
