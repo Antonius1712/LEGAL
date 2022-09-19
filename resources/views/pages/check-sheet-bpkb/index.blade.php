@@ -57,7 +57,11 @@
                                 <div class="col-xs-12 col-md-12 col-lg-3">
                                     <div class="form-group">
                                         <label>TAT</label>
-                                        <input type="text" name="tat" id="tat" class="form-control">
+                                        {{-- <input type="text" name="tat" id="tat" class="form-control"> --}}
+                                        <select name="tat" id="tat" class="form-control">
+                                            <option value=""></option>
+                                            <option value="Overdue">Overdue</option>
+                                        </select>
                                     </div>
                                 </div>
 
@@ -71,7 +75,15 @@
                                 <div class="col-xs-12 col-md-12 col-lg-3">
                                     <div class="form-group">
                                         <label>Status</label>
-                                        <input type="text" name="status" id="status" class="form-control">
+                                        {{-- <input type="text" name="status" id="status" class="form-control"> --}}
+                                        <select name="status" id="status" class="form-control">
+                                            <option value=""></option>
+                                            <option value="Open">Open</option>
+                                            <option value="Submitted">Submitted</option>
+                                            <option value="Approved by Analyst Claim MV">Approved by Analyst Claim MV</option>
+                                            <option value="Revision">Revision</option>
+                                            <option value="Filing">Filing</option>
+                                        </select>
                                     </div>
                                 </div>
 
@@ -125,6 +137,7 @@
 
                                 <div class="col-xs-12 col-md-12 col-lg-12">
                                     <button id="btn-search" class="btn btn-primary">CARI</button>
+                                    <button id="btn-reset" class="btn btn-outline-danger">RESET</button>
                                 </div>
                             </div>
                         </div>
@@ -278,9 +291,48 @@
             }, 5);
         });
 
+        $('#btn-reset').click(function(){
+            $('#loading').show();
+            ResetDataTable();
+            
+            $('#no_bpkb').val('');
+            $('#no_claim').val('');
+            $('#no_polis').val('');
+            $('#nama_tertanggung').val('');
+
+            $('#tanggal_pengajuan').val('');
+            $('#tat').val('');
+            $('#user').val('');
+            $('#status').val('');
+
+            $('#unit').val('');
+            $('#tahun').val('');
+            $('#nomor_polisi').val('');
+            $('#no_rangka').val('');
+
+            $('#merk').val('');
+            $('#date_of_loss').val('');
+            
+            SearchDataTable();
+            setTimeout(() => {
+                $('#loading').hide();
+            }, 100);
+        });
+
         $('#btn-search').click(function(){
             $('#loading').show();
             ResetDataTable();
+            SearchDataTable();
+            setTimeout(() => {
+                $('#loading').hide();
+            }, 100);
+        });
+
+        function ResetDataTable(){
+            $('#DataTable').DataTable().destroy();
+        }
+
+        function SearchDataTable(){
             let table = $('#DataTable').DataTable({
                 dom: 'Bfrtip',
                 buttons: [
@@ -382,15 +434,6 @@
             if( date_of_loss != '' ){
                 table.column(4).search(date_of_loss).draw();
             }
-            
-            setTimeout(() => {
-                $('#loading').hide();
-            }, 100);
-            
-        });
-
-        function ResetDataTable(){
-            $('#DataTable').DataTable().destroy();
         }
 
         function formatDate(date) {
