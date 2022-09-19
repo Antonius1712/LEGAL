@@ -33,8 +33,8 @@ class send_notification_email extends Command
         parent::__construct();
 
         $this->ListUserClaim = LGIGlobal_Users::where('status', 1)
-                    // ->where('Email', '!=', '')
-                    // ->where('Email', '!=', null)
+                    ->where('Email', '!=', '')
+                    ->where('Email', '!=', null)
                     ->whereHas('getUserGroup', function($query1){
                         $query1
                         ->where('GroupCode', 'USER_CLAIM')
@@ -49,8 +49,8 @@ class send_notification_email extends Command
                     ->get();
         
         $this->ListAnalystClaim = LGIGlobal_Users::where('status', 1)
-                    // ->where('Email', '!=', '')
-                    // ->where('Email', '!=', null)
+                    ->where('Email', '!=', '')
+                    ->where('Email', '!=', null)
                     ->whereHas('getUserGroup', function($query1){
                         $query1
                         ->where('GroupCode', 'ANALYST_CLAIM')
@@ -65,8 +65,8 @@ class send_notification_email extends Command
                     ->get();
 
         $this->ListHeadClaim = LGIGlobal_Users::where('status', 1)
-                    // ->where('Email', '!=', '')
-                    // ->where('Email', '!=', null)
+                    ->where('Email', '!=', '')
+                    ->where('Email', '!=', null)
                     ->whereHas('getUserGroup', function($query1){
                         $query1
                         ->where('GroupCode', 'HEAD_CLAIM')
@@ -120,11 +120,17 @@ class send_notification_email extends Command
      */
     public function handle()
     {
+        $RED = "\033[1;31m";
+        $GREEN = "\033[1;32m";
+        $LC = "\033[1;36m"; # Light Cyan
+        $NC = "\033[0m"; # No Color
+
         try {
             $log = LogSheetBPKB::where('email_sent', null)
-            ->where('next_email_role', '!=', null)
-            ->with('GetCreatedByData')
-            ->get();
+                                ->orWhere('email_sent', '')
+                                ->where('next_email_role', '!=', null)
+                                ->with('GetCreatedByData')
+                                ->get();
 
             foreach( $log as $val ){
                 if( $val->next_email_role == 'ANALYST_CLAIM' ) {
@@ -141,6 +147,9 @@ class send_notification_email extends Command
 
                     $HeadAnalyst = $this->ListHeadClaim;
                     $HeadAnalyst = $HeadAnalyst->pluck('Email')->toArray();
+
+                    // !FOR TESTING
+                    $HeadAnalyst[] = 'it-dba07@lippoinsurance.com';
 
                     $date = date('d-M-y', strtotime($val->created_at));
                     $time = date('h:i:s', strtotime($val->created_at));
@@ -161,15 +170,21 @@ class send_notification_email extends Command
                         $PARAM,
                         function ($mail) use ($Analyst, $HeadAnalyst) {
                             $mail->from(env('NO_REPLY_EMAIL'), env('APP_NAME'));
-                            // $mail->to($Analyst);
-                            $mail->to('it-dba07@lippoinsurance.com');
+                            
+                            // $mail->to(['it-dba07@lippoinsurance.com', 'antonius1712@gmail.com']);
+                            // $mail->cc(['antonius1720@gmail.com']);
+
+                            $mail->to($Analyst);
+                            $mail->cc($HeadAnalyst);
+
                             $mail->subject('LEGAL CHECK SHEET APPLICATION');
-                            // $mail->cc($HeadAnalyst);
                         }
                     ); 
 
                     $val->email_sent = 'yes';
                     $val->save();
+
+                    echo $GREEN."Sukses ".$NC."Sent email ke ".$LC."ANALYST_CLAIM \n".$NC;
 
 
                 } elseif ( $val->next_email_role == 'USER_LEGAL' ) {
@@ -193,6 +208,9 @@ class send_notification_email extends Command
                     $HeadLegal = $this->ListHeadLegal;
                     $HeadLegal = $HeadLegal->pluck('Email')->toArray();
 
+                    // !FOR TESTING
+                    $HeadLegal[] = 'it-dba07@lippoinsurance.com';
+
                     $date = date('d-M-y', strtotime($val->created_at));
                     $time = date('h:i:s', strtotime($val->created_at));
 
@@ -214,16 +232,20 @@ class send_notification_email extends Command
                         $PARAM,
                         function ($mail) use ($Legal, $HeadLegal) {
                             $mail->from(env('NO_REPLY_EMAIL'), env('APP_NAME'));
-                            // $mail->to($Legal);
-                            $mail->to(['it-dba07@lippoinsurance.com', 'antonius1712@gmail.com']);
+                            
+                            // $mail->to(['it-dba07@lippoinsurance.com', 'antonius1712@gmail.com']);
+                            // $mail->cc(['antonius1720@gmail.com']);
+
+                            $mail->to($Legal);
                             $mail->subject('LEGAL CHECK SHEET APPLICATION');
-                            // $mail->cc($HeadLegal);
-                            $mail->cc(['antonius1720@gmail.com']);
+                            $mail->cc($HeadLegal);
                         }
                     ); 
 
                     $val->email_sent = 'yes';
                     $val->save();
+
+                    echo $GREEN."Sukses ".$NC."Sent email ke ".$LC."USER_LEGAL \n".$NC;
                 }
             }
         } catch(\Exception $e) {
