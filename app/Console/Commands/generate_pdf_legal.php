@@ -46,7 +46,7 @@ class generate_pdf_legal extends Command
             $sheet_bpkb = SheetBpkb::where('status', 5)
                             ->where('pdf_sheet_bpkb', null)
                             ->get();
-            dd($sheet_bpkb);
+            // dd($sheet_bpkb);
             foreach( $sheet_bpkb as $key => $val ){
                 $pageTitle = 'Halaman';
                 $pageOfTitle = 'Dari';
