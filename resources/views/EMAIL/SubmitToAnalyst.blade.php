@@ -2,6 +2,6 @@
 <p>Ada permintaan Review Dokumen Check Sheet</p>
 <p>Tanggal pengajuan : <strong>{{ $tanggal }} pukul {{ $jam }}</strong></p>
 <p>di ajukan oleh : <strong>{{ $user }} - {{ $jabatan }}</strong></p>
-<p>Silahkan diperiksa di web legal.lippoinsurance.com untuk melihat detailnya.</p>
+<p>Silahkan diperiksa di web <a href="http://demo-app.lippoinsurance.com:82/">http://demo-app.lippoinsurance.com:82/</a> untuk melihat detailnya.</p>
 <p>Mohon untuk tidak membalas email ini</p>
 <p>Thank You</p>
