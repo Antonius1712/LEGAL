@@ -71,6 +71,8 @@ class CreateSheetBpkb extends Migration
 
             $table->string('status')->nullable();
 
+            $table->string('pdf_sheet_bpkb')->nullable();
+
             $table->timestamps();
         });
     }

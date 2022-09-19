@@ -6,9 +6,11 @@
     @if( $userGroup == 'HEAD_LEGAL' )
         @php( $readonly = 'readonly' )
         @php( $disabled = 'disabled' )
+        @php( $display = 'none' )
     @else
         @php( $readonly = '' )
         @php( $disabled = '' )
+        @php( $display = '' )
     @endif
     <form id="form-sheet" action="{{ Route('check-sheet-bpkb.update', $checkSheet->id) }}" method="post">
         {{ csrf_field() }}
@@ -681,7 +683,9 @@
                         </div>
 
                         {{-- TAMBAHAN --}}
-                        <button id="btn-add" class="btn btn-success">Add</button>
+                        <button id="btn-add" class="btn btn-success" style="display:{{ $display }}">
+                            Add
+                        </button>
                         <table class="table table-bordered">
                             <thead>
                                 <tr class="bg-primary text-white text-center">

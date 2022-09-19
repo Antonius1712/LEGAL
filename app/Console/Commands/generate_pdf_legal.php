@@ -43,7 +43,10 @@ class generate_pdf_legal extends Command
     {
         // STATUS 5 = FILING.
         try {
-            $sheet_bpkb = SheetBpkb::where('status', 5)->get();
+            $sheet_bpkb = SheetBpkb::where('status', 5)
+                            ->where('pdf_sheet_bpkb', null)
+                            ->get();
+            dd($sheet_bpkb);
             foreach( $sheet_bpkb as $key => $val ){
                 $pageTitle = 'Halaman';
                 $pageOfTitle = 'Dari';
@@ -60,6 +63,10 @@ class generate_pdf_legal extends Command
                 if( !file_exists($destinationPath) ){
                     $cmd = env('WKHTMLTOPDF')." -q --margin-top 10 --margin-left 5 --margin-right 5 --footer-font-size 6 --footer-left \"{$val->no_polis}\" --footer-right \"{$pageTitle} [page] {$pageOfTitle} [topage]\" {$url} {$destinationPath}";
                     exec($cmd);
+
+                    $val->pdf_sheet_bpkb = $destinationPath;
+                    $val->save();
+
                     echo($destinationPath);
                 }else{
                     // echo('Data Sudah ada \n ');
