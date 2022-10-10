@@ -61,6 +61,7 @@ class generate_pdf_legal extends Command
                 $destinationPath = $destination .'/'.$filename.'.pdf';
 
                 if( !file_exists($destinationPath) ){
+                    echo("Generating..");
                     $cmd = env('WKHTMLTOPDF')." -q --margin-top 10 --margin-left 5 --margin-right 5 --footer-font-size 6 --footer-left \"{$val->no_polis}\" --footer-right \"{$pageTitle} [page] {$pageOfTitle} [topage]\" {$url} {$destinationPath}";
                     exec($cmd);
 
@@ -69,16 +70,20 @@ class generate_pdf_legal extends Command
 
                     echo($destinationPath);
                 }else{
-                    echo('Data Sudah ada \n ');
-                    echo('Hapus Data Lama \n ');
+                    echo("Data Sudah ada \n");
+                    echo("Hapus Data Lama.. \n");
                     $unlink = unlink($destinationPath);
                     if( $unlink ){
-                        echo('generate \n ');
+                        echo("Generating new PDF.. \n");
                         $cmd = env('WKHTMLTOPDF')." -q --margin-top 10 --margin-left 5 --margin-right 5 --footer-font-size 6 --footer-left \"{$val->no_polis}\" --footer-right \"{$pageTitle} [page] {$pageOfTitle} [topage]\" {$url} {$destinationPath}";
                         exec($cmd);
-                        echo($destinationPath);  
+
+                        $val->pdf_sheet_bpkb = $filename;
+                        $val->save();
+                        
+                        echo($destinationPath." \n");  
                     }else{
-                        echo('error waktu unlink \n ');
+                        echo("error waktu unlink \n");
                     }
                     // echo('File sudah ada '. $destinationPath);
                 }

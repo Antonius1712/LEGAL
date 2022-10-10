@@ -244,15 +244,22 @@
                                             @endif
                                             
                                             @if( $val->status == 5 )
-                                                @php( $url = 'storage/app/public/pdf-sheet-bpkb-legal/'.date('Y', strtotime($val->created_at)).'/sheet_bpkb_'.$val->check_sheet_id.'.pdf' )
-                                                @if( !file_exists(public_path($url)) )
+                                                {{-- @php( $url = 'storage/app/public/pdf-sheet-bpkb-legal/'.date('Y', strtotime($val->created_at)).'/sheet_bpkb_'.$val->check_sheet_id.'.pdf' ) --}}
+                                                @if( $val->pdf_sheet_bpkb != null )
+                                                    @php( $url = 'storage/app/public/pdf-sheet-bpkb-legal/'.date('Y', strtotime($val->created_at)).'/'.$val->pdf_sheet_bpkb.'.pdf' )
+                                                    @if( !file_exists(public_path($url)) )
+                                                        <button id="btn-download-not-ready" class="btn-download-not-ready btn btn-sm btn-outline-success mt-1">
+                                                            Download
+                                                        </button>
+                                                    @else
+                                                        <a href="{{ url('storage/app/public/pdf-sheet-bpkb-legal/'.date('Y', strtotime($val->created_at)).'/sheet_bpkb_'.$val->check_sheet_id.'.pdf') }}" target="_blank" class="btn btn-sm btn-outline-success mt-1">
+                                                            Download
+                                                        </a>
+                                                    @endif
+                                                @else
                                                     <button id="btn-download-not-ready" class="btn-download-not-ready btn btn-sm btn-outline-success mt-1">
                                                         Download
                                                     </button>
-                                                @else
-                                                <a href="{{ url('storage/app/public/pdf-sheet-bpkb-legal/'.date('Y', strtotime($val->created_at)).'/sheet_bpkb_'.$val->check_sheet_id.'.pdf') }}" target="_blank" class="btn btn-sm btn-outline-success mt-1">
-                                                    Download
-                                                </a>
                                                 @endif
                                             @endif
                                         </td>

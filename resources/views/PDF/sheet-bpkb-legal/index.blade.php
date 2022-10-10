@@ -150,7 +150,9 @@
                     </tr>
                     <tr>
                         <td>
-                            By : {{ $SheetBpkb->getApproveUserLegalData->Name }}
+                            By : {{ isset($SheetBpkb->getApproveUserLegalData->Name) 
+                                ? $SheetBpkb->getApproveUserLegalData->Name 
+                                : '' }}
                         </td>
                     </tr>
                 </table>
