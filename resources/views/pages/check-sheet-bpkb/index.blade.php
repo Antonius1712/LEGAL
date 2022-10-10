@@ -175,7 +175,7 @@
                                         <td> {{ $val->check_sheet_id }} </td>
                                         <td> {{ $val->nomor_bpkb }} </td>
                                         <td> {{ $val->no_claim }} </td>
-                                        <td> {{ $val->policy_no }} </td>
+                                        <td> {{ $val->no_policy }} </td>
                                         <td> {{ date('d-M-y H:i:s', strtotime($val->date_of_loss)) }} </td>
                                         <td> {{ $val->insured }} </td>
                                         <td> {{ date('d-M-y H:i:s', strtotime($val->created_at)) }} </td>
@@ -244,9 +244,15 @@
                                             @endif
                                             
                                             @if( $val->status == 5 )
+                                                @if( !file_exists(url('storage/app/public/pdf-sheet-bpkb-legal/'.date('Y', strtotime($val->created_at)).'/sheet_bpkb_'.$val->check_sheet_id.'.pdf')) )
+                                                    <button id="btn-download-not-ready" class="btn-download-not-ready btn btn-sm btn-outline-success mt-1">
+                                                        Download
+                                                    </button>
+                                                @else
                                                 <a href="{{ url('storage/app/public/pdf-sheet-bpkb-legal/'.date('Y', strtotime($val->created_at)).'/sheet_bpkb_'.$val->check_sheet_id.'.pdf') }}" target="_blank" class="btn btn-sm btn-outline-success mt-1">
                                                     Download
                                                 </a>
+                                                @endif
                                             @endif
                                         </td>
                                     </tr>
@@ -326,6 +332,10 @@
             setTimeout(() => {
                 $('#loading').hide();
             }, 100);
+        });
+
+        $('.btn-download-not-ready').click(function(){
+            alert('Generating file still in progress.')
         });
 
         function ResetDataTable(){

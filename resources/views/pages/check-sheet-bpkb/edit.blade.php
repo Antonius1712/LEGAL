@@ -692,7 +692,7 @@
                                     <th> Judul </th>    
                                     <th> Tanggal Terima </th>    
                                     <th> Nomor </th>    
-                                    @if( $userGroup != 'HEAD_LEGAL' )
+                                    @if( $userGroup != 'USER_LEGAL' && $userGroup != 'HEAD_LEGAL' )
                                         <th> Hapus </th>    
                                     @endif
                                 </tr>    
@@ -732,7 +732,7 @@
                                         {{ $readonly }}
                                         >    
                                     </td>
-                                    @if( $userGroup != 'HEAD_LEGAL' )
+                                    @if( $userGroup != 'USER_LEGAL' && $userGroup != 'HEAD_LEGAL' )
                                     <td>
                                         <button type="button" 
                                         class="btn btn-danger btn-hapus">
@@ -950,12 +950,12 @@
         if( $(this).prop('checked') == true ){
             $('#tanggal_terima_bpkb').attr('disabled', false);
             $('#nomor_bpkb').attr('readonly', false);
-            $('#nomor_mesin_bpkb').attr('disabled', false);
+            $('#nomor_mesin_bpkb').attr('readonly', false);
             $('#nomor_rangka_bpkb').attr('readonly', false);
         } else {
             $('#tanggal_terima_bpkb').attr('disabled', true);
             $('#nomor_bpkb').attr('readonly', true);
-            $('#nomor_mesin_bpkb').attr('disabled', true);
+            $('#nomor_mesin_bpkb').attr('readonly', true);
             $('#nomor_rangka_bpkb').attr('readonly', true);
         }
     });
@@ -963,10 +963,10 @@
     $('#faktur_kendaraan_checkbox').change(function(){
         if( $(this).prop('checked') == true ){
             $('#tanggal_terima_faktur_kendaraan').attr('disabled', false);
-            $('#nomor_faktur_kendaraan').attr('readonly', false);
+            $('#keterangan_faktur_kendaraan').attr('readonly', false);
         } else {
             $('#tanggal_terima_faktur_kendaraan').attr('disabled', true);
-            $('#nomor_faktur_kendaraan').attr('readonly', true);
+            $('#keterangan_faktur_kendaraan').attr('readonly', true);
         }
     });
 
@@ -983,30 +983,30 @@
     $('#stnk_checkbox').change(function(){
         if( $(this).prop('checked') == true ){
             $('#tanggal_terima_stnk').attr('disabled', false);
-            $('#nomor_stnk').attr('disabled', false);
+            $('#nomor_stnk').attr('readonly', false);
         } else {
             $('#tanggal_terima_stnk').attr('disabled', true);
-            $('#nomor_stnk').attr('disabled', true);
+            $('#nomor_stnk').attr('readonly', true);
         }
     });
 
     $('#surat_ketetapan_pajak_daerah_checkbox').change(function(){
         if( $(this).prop('checked') == true ){
             $('#tanggal_terima_surat_ketetapan_pajak_daerah').attr('disabled', false);
-            $('#nomor_surat_ketetapan_pajak_daerah').attr('disabled', false);
+            $('#nomor_surat_ketetapan_pajak_daerah').attr('readonly', false);
         } else {
             $('#tanggal_terima_surat_ketetapan_pajak_daerah').attr('disabled', true);
-            $('#nomor_surat_ketetapan_pajak_daerah').attr('disabled', true);
+            $('#nomor_surat_ketetapan_pajak_daerah').attr('readonly', true);
         }
     });
 
     $('#kunci_kontak_checkbox').change(function(){
         if( $(this).prop('checked') == true ){
             $('#tanggal_terima_kunci_kontak').attr('disabled', false);
-            $('#nomor_kunci_kontak').attr('disabled', false);
+            $('#nomor_kunci_kontak').attr('readonly', false);
         } else {
             $('#tanggal_terima_kunci_kontak').attr('disabled', true);
-            $('#nomor_kunci_kontak').attr('disabled', true);
+            $('#nomor_kunci_kontak').attr('readonly', true);
         }
     });
     /* FUNGSI CHECKBOX END */
