@@ -244,7 +244,8 @@
                                             @endif
                                             
                                             @if( $val->status == 5 )
-                                                @if( !file_exists(url('storage/app/public/pdf-sheet-bpkb-legal/'.date('Y', strtotime($val->created_at)).'/sheet_bpkb_'.$val->check_sheet_id.'.pdf')) )
+                                                @php( $url = 'storage/app/public/pdf-sheet-bpkb-legal/'.date('Y', strtotime($val->created_at)).'/sheet_bpkb_'.$val->check_sheet_id.'.pdf' )
+                                                @if( !file_exists(public_path($url)) )
                                                     <button id="btn-download-not-ready" class="btn-download-not-ready btn btn-sm btn-outline-success mt-1">
                                                         Download
                                                     </button>
