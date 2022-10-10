@@ -64,23 +64,23 @@ class generate_pdf_legal extends Command
                     $cmd = env('WKHTMLTOPDF')." -q --margin-top 10 --margin-left 5 --margin-right 5 --footer-font-size 6 --footer-left \"{$val->no_polis}\" --footer-right \"{$pageTitle} [page] {$pageOfTitle} [topage]\" {$url} {$destinationPath}";
                     exec($cmd);
 
-                    $val->pdf_sheet_bpkb = $destinationPath;
+                    $val->pdf_sheet_bpkb = $filename;
                     $val->save();
 
                     echo($destinationPath);
                 }else{
-                    // echo('Data Sudah ada \n ');
-                    // echo('Hapus Data Lama \n ');
-                    // $unlink = unlink($destinationPath);
-                    // if( $unlink ){
-                    //     echo('generate \n ');
-                    //     $cmd = env('WKHTMLTOPDF')." -q --margin-top 10 --margin-left 5 --margin-right 5 --footer-font-size 6 --footer-left \"{$val->no_polis}\" --footer-right \"{$pageTitle} [page] {$pageOfTitle} [topage]\" {$url} {$destinationPath}";
-                    //     exec($cmd);
-                    //     echo($destinationPath);  
-                    // }else{
-                    //     echo('error 2 \n ');
-                    // }
-                    echo('File sudah ada '. $destinationPath);
+                    echo('Data Sudah ada \n ');
+                    echo('Hapus Data Lama \n ');
+                    $unlink = unlink($destinationPath);
+                    if( $unlink ){
+                        echo('generate \n ');
+                        $cmd = env('WKHTMLTOPDF')." -q --margin-top 10 --margin-left 5 --margin-right 5 --footer-font-size 6 --footer-left \"{$val->no_polis}\" --footer-right \"{$pageTitle} [page] {$pageOfTitle} [topage]\" {$url} {$destinationPath}";
+                        exec($cmd);
+                        echo($destinationPath);  
+                    }else{
+                        echo('error waktu unlink \n ');
+                    }
+                    // echo('File sudah ada '. $destinationPath);
                 }
             }
         } catch(\Exception $e) {
