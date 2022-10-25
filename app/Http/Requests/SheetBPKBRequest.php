@@ -41,7 +41,7 @@ class SheetBPKBRequest extends FormRequest
             'nomor_rangka_bpkb' => 'required_with:bpkb_checkbox,on',
             'tanggal_terima_bpkb' => 'required_with:bpkb_checkbox,on',
             
-            'nomor_faktur_kendaraan' => 'required_with:faktur_kendaraan_checkbox,on',
+            'keterangan_faktur_kendaraan' => 'required_with:faktur_kendaraan_checkbox,on',
             'tanggal_terima_faktur_kendaraan' => 'required_with:faktur_kendaraan_checkbox,on',
 
             'nomor_nik' => 'required_with:nik_checkbox,on',
@@ -56,7 +56,7 @@ class SheetBPKBRequest extends FormRequest
             'nomor_kunci_kontak' => 'required_with:kunci_kontak_checkbox,on',
             'tanggal_terima_kunci_kontak' => 'required_with:kunci_kontak_checkbox,on',
 
-            'judul_tambahan.*' => 'required',
+            'judul_tambahan.*' => 'filled',
             'tanggal_terima_tambahan.*' => 'filled',
             'nomor_tambahan.*' => 'filled',
         ];

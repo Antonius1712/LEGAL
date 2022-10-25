@@ -130,7 +130,7 @@
                                                 <input type="text" 
                                                 name="date_of_loss" 
                                                 id="date_of_loss" 
-                                                class="form-control"
+                                                class="form-control datepicker"
                                                 value="{{ $checkSheet->date_of_loss
                                                             ? date('d-M-y', strtotime($checkSheet->date_of_loss))
                                                             : '' }}"
@@ -455,7 +455,7 @@
                                     name="nik_checkbox" 
                                     id="nik_checkbox"
                                     {{ $checkSheet->nik_checkbox
-                                            ? 'readonly'
+                                            ? 'checked'
                                             : '' }}
                                     {{ $disabled }}
                                     >
@@ -514,7 +514,7 @@
                                     name="stnk_checkbox" 
                                     id="stnk_checkbox"
                                     {{ $checkSheet->stnk_checkbox
-                                            ? 'readonly'
+                                            ? 'checked'
                                             : '' }}
                                     {{ $disabled }}
                                     >
@@ -573,7 +573,7 @@
                                     name="surat_ketetapan_pajak_daerah_checkbox" 
                                     id="surat_ketetapan_pajak_daerah_checkbox"
                                     {{ $checkSheet->surat_ketetapan_pajak_daerah_checkbox
-                                            ? 'readonly'
+                                            ? 'checked'
                                             : '' }}
                                     {{ $disabled }}
                                     >
@@ -632,7 +632,7 @@
                                     name="kunci_kontak_checkbox" 
                                     id="kunci_kontak_checkbox"
                                     {{ $checkSheet->kunci_kontak_checkbox
-                                            ? 'readonly'
+                                            ? 'checked'
                                             : '' }}
                                     {{ $disabled }}
                                     >
