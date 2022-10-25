@@ -698,50 +698,99 @@
                                 </tr>    
                             </thead>    
                             <tbody id="appendContent">
-                                {{-- {{ dd($sheetTambahan) }} --}}
-                                @if( count($sheetTambahan) > 0 )
-                                @foreach ($sheetTambahan as $key => $val)
-                                <tr class="text-center bg-white text-black">
-                                    <td>
-                                        <input type="text" 
-                                        name="judul_tambahan[]" 
-                                        class="form-control"
-                                        value="{{ $val->judul_tambahan 
-                                                    ? $val->judul_tambahan 
-                                                    : $val->judul_tambahan }}"
-                                        {{ $readonly }}
-                                        >    
-                                    </td>    
-                                    <td>
-                                        <input type="text" 
-                                        name="tanggal_terima_tambahan[]" 
-                                        class="form-control datepicker"
-                                        value="{{ $val->tanggal_terima_tambahan 
-                                            ? date('d-M-y', strtotime($val->tanggal_terima_tambahan ))
-                                            : $val->tanggal_terima_tambahan }}"
-                                        {{ $readonly }}
-                                        >    
-                                    </td>    
-                                    <td>
-                                        <input type="text" 
-                                        name="nomor_tambahan[]" 
-                                        class="form-control"
-                                        value="{{ $val->nomor_tambahan 
-                                            ? $val->nomor_tambahan 
-                                            : $val->nomor_tambahan }}"
-                                        {{ $readonly }}
-                                        >    
-                                    </td>
-                                    @if( $userGroup != 'USER_LEGAL' && $userGroup != 'HEAD_LEGAL' )
-                                    <td>
-                                        <button type="button" 
-                                        class="btn btn-danger btn-hapus">
-                                            Hapus
-                                        </button>    
-                                    </td>
-                                    @endif
-                                </tr>
-                                @endforeach
+                                @if( old('judul_tambahan') != null && count(old('judul_tambahan')) > 0 )
+                                    @foreach (old('judul_tambahan') as $key => $val)
+                                        <tr class="text-center bg-white text-black">
+                                            <td>
+                                                <input type="text" 
+                                                name="judul_tambahan[]" 
+                                                class="form-control"
+                                                value="{{ old('judul_tambahan')[$key] 
+                                                            ? old('judul_tambahan')[$key] 
+                                                            : old('judul_tambahan')[$key] }}"
+                                                required
+                                                >
+                                                @if($errors->has('judul_tambahan.'.$key))
+                                                    <div class="error">{{ $errors->first('judul_tambahan.'.$key) }}</div>
+                                                @endif
+                                            </td>    
+                                            <td>
+                                                <input type="text" 
+                                                name="tanggal_terima_tambahan[]" 
+                                                class="form-control datepicker"
+                                                value="{{ old('tanggal_terima_tambahan')[$key] 
+                                                            ? old('tanggal_terima_tambahan')[$key] 
+                                                            : old('tanggal_terima_tambahan')[$key] }}"
+                                                required
+                                                >    
+                                                @if($errors->has('tanggal_terima_tambahan.'.$key))
+                                                    <div class="error">{{ $errors->first('tanggal_terima_tambahan.'.$key) }}</div>
+                                                @endif
+                                            </td>    
+                                            <td>
+                                                <input type="text" 
+                                                name="nomor_tambahan[]" 
+                                                class="form-control"
+                                                value="{{ old('nomor_tambahan')[$key] 
+                                                            ? old('nomor_tambahan')[$key] 
+                                                            : old('nomor_tambahan')[$key] }}"
+                                                required
+                                                >   
+                                                @if($errors->has('nomor_tambahan.'.$key))
+                                                    <div class="error">{{ $errors->first('nomor_tambahan.'.$key) }}</div>
+                                                @endif 
+                                            </td>
+                                            <td>
+                                                <button type="button" 
+                                                class="btn btn-danger btn-hapus">
+                                                    Hapus
+                                                </button>    
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @elseif( count($sheetTambahan) > 0 )
+                                    @foreach ($sheetTambahan as $key => $val)
+                                        <tr class="text-center bg-white text-black">
+                                            <td>
+                                                <input type="text" 
+                                                name="judul_tambahan[]" 
+                                                class="form-control"
+                                                value="{{ $val->judul_tambahan 
+                                                            ? $val->judul_tambahan 
+                                                            : $val->judul_tambahan }}"
+                                                {{ $readonly }}
+                                                >    
+                                            </td>    
+                                            <td>
+                                                <input type="text" 
+                                                name="tanggal_terima_tambahan[]" 
+                                                class="form-control datepicker"
+                                                value="{{ $val->tanggal_terima_tambahan 
+                                                    ? date('d-M-y', strtotime($val->tanggal_terima_tambahan ))
+                                                    : $val->tanggal_terima_tambahan }}"
+                                                {{ $readonly }}
+                                                >    
+                                            </td>    
+                                            <td>
+                                                <input type="text" 
+                                                name="nomor_tambahan[]" 
+                                                class="form-control"
+                                                value="{{ $val->nomor_tambahan 
+                                                    ? $val->nomor_tambahan 
+                                                    : $val->nomor_tambahan }}"
+                                                {{ $readonly }}
+                                                >    
+                                            </td>
+                                            @if( $userGroup != 'USER_LEGAL' && $userGroup != 'HEAD_LEGAL' )
+                                            <td>
+                                                <button type="button" 
+                                                class="btn btn-danger btn-hapus">
+                                                    Hapus
+                                                </button>    
+                                            </td>
+                                            @endif
+                                        </tr>
+                                    @endforeach
                                 @endif
                             </tbody>
                         </table>

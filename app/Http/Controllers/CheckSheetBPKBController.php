@@ -176,7 +176,7 @@ class CheckSheetBPKBController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SheetBPKBRequest $request, $id)
     {
         $sheet = $this->SheetBPKBRepo->UpdateSheetBPKB($request, $id);
         if( $sheet ){
