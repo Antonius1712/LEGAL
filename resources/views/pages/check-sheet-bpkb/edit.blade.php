@@ -982,6 +982,9 @@
         } else {
             $('#tanggal_terima_surat_tanda_bukti_lapor_polisi').attr('disabled', true);
             $('#nomor_surat_tanda_bukti_lapor_polisi').attr('readonly', true);
+
+            $('#tanggal_terima_surat_tanda_bukti_lapor_polisi').val('');
+            $('#nomor_surat_tanda_bukti_lapor_polisi').val('');
         }
     });
 
@@ -992,6 +995,9 @@
         } else {
             $('#tanggal_terima_kuitansi_blanko').attr('disabled', true);
             $('#nomor_kuitansi_blanko').attr('readonly', true);
+
+            $('#tanggal_terima_kuitansi_blanko').val('');
+            $('#nomor_kuitansi_blanko').val('');
         }
     });
 
@@ -1006,6 +1012,11 @@
             $('#nomor_bpkb').attr('readonly', true);
             $('#nomor_mesin_bpkb').attr('readonly', true);
             $('#nomor_rangka_bpkb').attr('readonly', true);
+
+            $('#tanggal_terima_bpkb').val('');
+            $('#nomor_bpkb').val('');
+            $('#nomor_mesin_bpkb').val('');
+            $('#nomor_rangka_bpkb').val('');
         }
     });
 
@@ -1016,6 +1027,9 @@
         } else {
             $('#tanggal_terima_faktur_kendaraan').attr('disabled', true);
             $('#keterangan_faktur_kendaraan').attr('readonly', true);
+
+            $('#tanggal_terima_faktur_kendaraan').val('');
+            $('#keterangan_faktur_kendaraan').val('');
         }
     });
 
@@ -1026,6 +1040,9 @@
         } else {
             $('#tanggal_terima_nik').attr('disabled', true);
             $('#nomor_nik').attr('readonly', true);
+
+            $('#tanggal_terima_nik').val('');
+            $('#nomor_nik').val('');
         }
     });
 
@@ -1036,6 +1053,9 @@
         } else {
             $('#tanggal_terima_stnk').attr('disabled', true);
             $('#nomor_stnk').attr('readonly', true);
+
+            $('#tanggal_terima_stnk').val('');
+            $('#nomor_stnk').val('');
         }
     });
 
@@ -1046,6 +1066,9 @@
         } else {
             $('#tanggal_terima_surat_ketetapan_pajak_daerah').attr('disabled', true);
             $('#nomor_surat_ketetapan_pajak_daerah').attr('readonly', true);
+
+            $('#tanggal_terima_surat_ketetapan_pajak_daerah').val('');
+            $('#nomor_surat_ketetapan_pajak_daerah').val('');
         }
     });
 
@@ -1056,6 +1079,9 @@
         } else {
             $('#tanggal_terima_kunci_kontak').attr('disabled', true);
             $('#nomor_kunci_kontak').attr('readonly', true);
+
+            $('#tanggal_terima_kunci_kontak').val('');
+            $('#nomor_kunci_kontak').val('');
         }
     });
     /* FUNGSI CHECKBOX END */

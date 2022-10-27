@@ -141,6 +141,35 @@ class SheetBPKBRepo
         $SheetBpkb->date_of_loss = $this->formatCarbon($request->date_of_loss);
         $SheetBpkb->unit = $request->unit;
 
+        $SheetBpkb->surat_tanda_bukti_lapor_polisi_checkbox = null;
+        $SheetBpkb->tanggal_terima_surat_tanda_bukti_lapor_polisi = null;
+        $SheetBpkb->nomor_surat_tanda_bukti_lapor_polisi = null;
+        $SheetBpkb->kuitansi_blanko_checkbox = null;
+        $SheetBpkb->tanggal_terima_kuitansi_blanko = null;
+        $SheetBpkb->nomor_kuitansi_blanko = null;
+        $SheetBpkb->bpkb_checkbox = null;
+        $SheetBpkb->tanggal_terima_bpkb = null;
+        $SheetBpkb->nomor_bpkb = null;
+        $SheetBpkb->nomor_mesin_bpkb = null;
+        $SheetBpkb->nomor_rangka_bpkb = null;
+        $SheetBpkb->faktur_kendaraan_checkbox = null;
+        $SheetBpkb->tanggal_terima_faktur_kendaraan = null;
+        $SheetBpkb->keterangan_faktur_kendaraan = null;
+        $SheetBpkb->nik_checkbox = null;
+        $SheetBpkb->tanggal_terima_nik = null;
+        $SheetBpkb->nomor_nik = null;
+        $SheetBpkb->stnk_checkbox = null;
+        $SheetBpkb->tanggal_terima_stnk = null;
+        $SheetBpkb->nomor_stnk = null;
+        $SheetBpkb->tanggal_terima_stnk = null;
+        $SheetBpkb->nomor_stnk = null;
+        $SheetBpkb->surat_ketetapan_pajak_daerah_checkbox = null;
+        $SheetBpkb->tanggal_terima_surat_ketetapan_pajak_daerah = null;
+        $SheetBpkb->nomor_surat_ketetapan_pajak_daerah = null;
+        $SheetBpkb->kunci_kontak_checkbox = null;
+        $SheetBpkb->tanggal_terima_kunci_kontak = null;
+        $SheetBpkb->nomor_kunci_kontak = null;
+
         if( isset($request->surat_tanda_bukti_lapor_polisi_checkbox) 
             && $request->surat_tanda_bukti_lapor_polisi_checkbox == 'on' 
         ){
@@ -230,6 +259,8 @@ class SheetBPKBRepo
             $SheetBpkb->reject_at_legal = null;
         }
 
+        // dd($SheetBpkb);
+
         $SheetBpkb->save();
 
         if( isset($request->judul_tambahan) && count($request->judul_tambahan) > 0 ){
@@ -242,6 +273,9 @@ class SheetBPKBRepo
                 $sheetBpkbTambahan->nomor_tambahan = $request->nomor_tambahan[$key];
                 $sheetBpkbTambahan->save();
             }
+        }else{
+            // KALAU DI HAPUS SEMUA DI FRONTEND, DELETE DI DB.
+            SheetBpkbTambahan::where('sheet_bpkb_id', $SheetBpkb->id)->delete();
         }
 
         return $SheetBpkb;

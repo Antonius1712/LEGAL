@@ -178,6 +178,7 @@ class CheckSheetBPKBController extends Controller
      */
     public function update(SheetBPKBRequest $request, $id)
     {
+        // dd($request->all());
         $sheet = $this->SheetBPKBRepo->UpdateSheetBPKB($request, $id);
         if( $sheet ){
             $this->SheetBPKBRepo->SaveLog($sheet, $request->comment);
