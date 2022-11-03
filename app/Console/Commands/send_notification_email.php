@@ -162,8 +162,8 @@ class send_notification_email extends Command
                     ];
                     
                     if( $val->status == 4 ){
-                        $PARAM['user_reject'] = $SheetBpkb->getRejectUserLegalData->Name;
-                        $PARAM['jabatan_reject'] = $SheetBpkb->getRejectUserLegalData->getDept->DeptName;
+                        $PARAM['user_reject'] = $val->getRejectUserLegalData->Name;
+                        $PARAM['jabatan_reject'] = $val->getRejectUserLegalData->getDept->DeptName;
                     }
 
                     \Mail::send($emailTemplate, 
