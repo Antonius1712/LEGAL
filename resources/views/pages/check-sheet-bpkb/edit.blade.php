@@ -184,6 +184,9 @@
                                         : '' }} 
                                     {{ $disabled }}
                                     >
+                                    @if( $userGroup == 'USER_LEGAL' || $userGroup == 'HEAD_LEGAL' )
+                                        <input type="hidden" name="surat_tanda_bukti_lapor_polisi_checkbox" value="{{ $checkSheet->surat_tanda_bukti_lapor_polisi_checkbox ? 'on' : '' }}">
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-xs-12 col-md-12 col-lg-6">
@@ -243,6 +246,9 @@
                                             : '' }} 
                                     {{ $disabled }}
                                     >
+                                    @if( $userGroup == 'USER_LEGAL' || $userGroup == 'HEAD_LEGAL' )
+                                        <input type="hidden" name="kuitansi_blanko_checkbox" value="{{ $checkSheet->kuitansi_blanko_checkbox ? 'on' : '' }}">
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-xs-12 col-md-12 col-lg-6">
@@ -302,6 +308,9 @@
                                             : '' }}
                                     {{ $disabled }}
                                     >
+                                    @if( $userGroup == 'USER_LEGAL' || $userGroup == 'HEAD_LEGAL' )
+                                        <input type="hidden" name="bpkb_checkbox" value="{{ $checkSheet->bpkb_checkbox ? 'on' : '' }}">
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-xs-12 col-md-12 col-lg-6">
@@ -400,6 +409,9 @@
                                             : '' }}
                                     {{ $disabled }}
                                     >
+                                    @if( $userGroup == 'USER_LEGAL' || $userGroup == 'HEAD_LEGAL' )
+                                        <input type="hidden" name="faktur_kendaraan_checkbox" value="{{ $checkSheet->faktur_kendaraan_checkbox ? 'on' : '' }}">
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-xs-12 col-md-12 col-lg-6">
@@ -459,6 +471,9 @@
                                             : '' }}
                                     {{ $disabled }}
                                     >
+                                    @if( $userGroup == 'USER_LEGAL' || $userGroup == 'HEAD_LEGAL' )
+                                        <input type="hidden" name="nik_checkbox" value="{{ $checkSheet->nik_checkbox ? 'on' : '' }}">
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-xs-12 col-md-12 col-lg-6">
@@ -518,6 +533,9 @@
                                             : '' }}
                                     {{ $disabled }}
                                     >
+                                    @if( $userGroup == 'USER_LEGAL' || $userGroup == 'HEAD_LEGAL' )
+                                        <input type="hidden" name="stnk_checkbox" value="{{ $checkSheet->stnk_checkbox ? 'on' : '' }}">
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-xs-12 col-md-12 col-lg-6">
@@ -577,6 +595,9 @@
                                             : '' }}
                                     {{ $disabled }}
                                     >
+                                    @if( $userGroup == 'USER_LEGAL' || $userGroup == 'HEAD_LEGAL' )
+                                        <input type="hidden" name="surat_ketetapan_pajak_daerah_checkbox" value="{{ $checkSheet->surat_ketetapan_pajak_daerah_checkbox ? 'on' : '' }}">
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-xs-12 col-md-12 col-lg-6">
@@ -636,6 +657,9 @@
                                             : '' }}
                                     {{ $disabled }}
                                     >
+                                    @if( $userGroup == 'USER_LEGAL' || $userGroup == 'HEAD_LEGAL' )
+                                        <input type="hidden" name="kunci_kontak_checkbox" value="{{ $checkSheet->kunci_kontak_checkbox ? 'on' : '' }}">
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-xs-12 col-md-12 col-lg-6">

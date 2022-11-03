@@ -284,6 +284,7 @@ class SheetBPKBRepo
     public function SaveLog($sheet, $comment = null){
         $status = $sheet->status;
         $next_email_role = null;
+        $reject_email_user_id = null;
         switch ($status) {
             case 1:
                 $action = 'Save draft Sheet BPKB';
@@ -299,6 +300,7 @@ class SheetBPKBRepo
             case 4:
                 $action = 'Reject Sheet BPKB and back to Analyst Claim MV';
                 $next_email_role = 'ANALYST_CLAIM';
+                $reject_email_user_id = Auth()->user()->UserId;
                 break;
             case 5:
                 $action = 'Approve Filing Sheet BPKB';
@@ -317,6 +319,7 @@ class SheetBPKBRepo
         $LogSheetBPKB->action = $action;
         $LogSheetBPKB->comment = $comment;
         $LogSheetBPKB->next_email_role = $next_email_role;
+        $LogSheetBPKB->reject_email_user_id = $reject_email_user_id;
         $LogSheetBPKB->save();
     }
 
