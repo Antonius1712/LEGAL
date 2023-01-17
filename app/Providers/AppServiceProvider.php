@@ -24,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton('Site', function($app){
+            return new \App\Helpers\Site();
+        });
     }
 }

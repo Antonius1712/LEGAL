@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Facades\Site;
 use App\Http\Requests\SheetBPKBRequest;
 use App\Model\LGIGlobal_UserGroup;
 use App\Model\LGIGlobal_Users;
@@ -130,7 +131,7 @@ class CheckSheetBPKBController extends Controller
      */
     public function store(SheetBPKBRequest $request)
     {
-        // dd($request->all());
+        Site::SaveActivityLog($request->except(['_token', '_method']), 1);
         $sheet = $this->SheetBPKBRepo->SaveSheetBPKB($request);
         if( $sheet ){
             $this->SheetBPKBRepo->SaveLog($sheet);
@@ -179,6 +180,7 @@ class CheckSheetBPKBController extends Controller
     public function update(SheetBPKBRequest $request, $id)
     {
         // dd($request->all());
+        Site::SaveActivityLog($request->except(['_token', '_method']), 2, $id);
         $sheet = $this->SheetBPKBRepo->UpdateSheetBPKB($request, $id);
         if( $sheet ){
             $this->SheetBPKBRepo->SaveLog($sheet, $request->comment);
