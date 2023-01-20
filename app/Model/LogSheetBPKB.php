@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Model;
-
 use Illuminate\Database\Eloquent\Model;
+use App\Model\SheetBpkb;
 
 class LogSheetBPKB extends Model
 {
@@ -24,5 +24,9 @@ class LogSheetBPKB extends Model
 
     public function getRejectUserLegalData(){
         return $this->hasOne(LGIGlobal_Users::class, 'UserId', 'reject_email_user_id');
+    }
+
+    public function getCheckSheet(){
+        return $this->hasOne(SheetBpkb::class, 'id', 'sheet_id');
     }
 }

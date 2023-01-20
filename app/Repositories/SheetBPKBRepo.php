@@ -304,7 +304,7 @@ class SheetBPKBRepo
                 break;
             case 5:
                 $action = 'Approve Filing Sheet BPKB';
-                $next_email_role = 'USER_LEGAL';
+                $next_email_role = 'USER_CLAIM';
                 break;
             default:
                 $action = '';

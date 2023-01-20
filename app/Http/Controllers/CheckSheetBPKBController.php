@@ -20,6 +20,8 @@ class CheckSheetBPKBController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    private $SheetBPKBRepo, $ListUserClaim, $ListAnalystClaim, $ListHeadClaim, $ListUserLegal, $ListHeadLegal;
+
     public function __construct()
     {
         $this->SheetBPKBRepo = SheetBPKBRepo::getInstance();
