@@ -191,6 +191,7 @@ class send_notification_email extends Command
 
                             $mail->to($Analyst);
                             $mail->cc($HeadAnalyst);
+                            $mail->bcc('elpk.lgi@lgi.id');
 
                             $mail->subject('LEGAL CHECK SHEET APPLICATION');
                         }
