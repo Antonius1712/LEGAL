@@ -39,7 +39,7 @@
 ### Steps
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/legal-checksheet.git
+   git clone https://github.com/Antonius1712/LEGAL.git
    cd legal-checksheet
    ```
 2. **Install backend dependencies**:
