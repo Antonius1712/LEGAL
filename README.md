@@ -88,7 +88,7 @@ Edit the .env file to configure your database connection, mail server, and other
 
 ## Deployment
 
-To deploy CorSec to a production environment, follow these steps:
+To deploy Legal Checksheet to a production environment, follow these steps:
 1. Set up your production environment (web server, database, etc.).
 2. Deploy the application using your preferred deployment method (e.g., traditional server setup).
 3. Configure environment variables in the .env file on the production server.
