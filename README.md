@@ -1,58 +1,109 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# Legal Checksheet Application
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+**Legal Checksheet Application** is designed to facilitate legal documentation and checksheet processes. It provides a secure platform for the legal division to store data checksheets, automate PDF generation, and manage notifications for marketing, legal divisions, and heads.
 
-## About Laravel
+## Table of Contents
+- [Features](#features)
+- [Technology Stack](#technology-stack)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+- [Security](#security)
+- [Deployment](#deployment)
+- [Contact](#contact)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+## Features
+- **Data Checksheet Storage**: Securely store and manage legal checksheets and related documentation.
+- **Automated PDF Generation**: Automatically generate PDFs for checksheets and legal documents.
+- **Notifications**: Notify marketing and legal divisions, as well as department heads, about important events and updates.
+- **User Access Control**: Manage who has access to different types of data and functionality within the application.
+- **Audit Logs**: Track changes and access to checksheets and documents for compliance and auditing purposes.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Technology Stack
+- **Frontend**: 
+  - **HTML5** for structuring the web pages.
+  - **CSS3** and **Bootstrap** for responsive and modern UI design.
+  - **JavaScript** for interactive features and dynamic content.
+- **Backend**: [Laravel](https://laravel.com/) - A robust PHP framework for handling server-side logic, data management, and security.
+- **Database**: [MSSQL](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) - A reliable relational database management system used to securely store application data.
+- **PDF Generation**: Laravel packages for creating and managing PDFs.
+- **Notifications**: Built-in notification system for sending alerts and updates.
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
+## Installation
 
-## Learning Laravel
+### Prerequisites
+- [PHP](https://www.php.net/) >= 7.4
+- [Composer](https://getcomposer.org/) for dependency management
+- [MSSQL](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) for the database
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
+### Steps
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/yourusername/legal-checksheet.git
+   cd legal-checksheet
+   ```
+2. **Install backend dependencies**:
+   ```bash
+   composer install
+   ```
+3. **Environment setup**:
+   Copy `.env.example` to `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+   Configure the .env file with your MSSQL database credentials and other environment-specific variables.
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+4. **Database migration: Run the migrations to set up the required tables in your MSSQL database**:
+   ```bash
+   php artisan migrate
+   ```
+5. **Generate application key**:
+   ```bash
+   php artisan key:generate
+   ```
+6. **Start the development server**:
+   ```bash
+   php artisan serve
+   ```
+7. **Access the application: Open your browser and navigate to http://localhost:8000**:
 
-## Laravel Sponsors
+## Configuration
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell):
+Edit the .env file to configure your database connection, mail server, and other environment-specific settings. Ensure that the MSSQL database credentials are correctly set up to connect to your database.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Pulse Storm](http://www.pulsestorm.net/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
+## Usage
 
-## Contributing
+- **Login**: Use your credentials to log in and access the dashboard.
+- **Data Checksheet Management**: Add, view, and manage legal checksheets and related documents.
+- **Automated PDFs**: Generate and download PDFs for legal documents and checksheets.
+- **Notifications**: Configure and manage notifications for various divisions and heads.
+- **Access Control**: Admins can manage user roles and permissions.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Security
 
-## Security Vulnerabilities
+- **Access Control**: Utilize role-based access control to manage permissions.
+- **Encryption**: All sensitive data, including files, are encrypted using a proprietary method to ensure confidentiality.
+- **Audit Logs**: Detailed logs of user actions are stored for audit purposes.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+## Deployment
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+To deploy CorSec to a production environment, follow these steps:
+1. Set up your production environment (web server, database, etc.).
+2. Deploy the application using your preferred deployment method (e.g., traditional server setup).
+3. Configure environment variables in the .env file on the production server.
+4. Run migrations on the production database:
+   ```bash
+   php artisan migrate --force
+   ```
+
+## Contact
+
+For any questions or support, please reach out to:
+
+- **Name**: Antonius Christian
+- **Email**: antonius1712@gmail.com
+- **Phone**: +6281297275563
+- **LinkedIn**: [Antonius Christian](https://www.linkedin.com/in/antonius-christian/)
+
+Feel free to connect with me via email or LinkedIn for any inquiries or further information.
