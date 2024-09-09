@@ -107,3 +107,27 @@ For any questions or support, please reach out to:
 - **LinkedIn**: [Antonius Christian](https://www.linkedin.com/in/antonius-christian/)
 
 Feel free to connect with me via email or LinkedIn for any inquiries or further information.
+
+## Screenshots
+
+Here are some screenshots of the Legal Checksheet Application:
+
+### Login
+![Login](https://raw.githubusercontent.com/Antonius1712/docs-screenshots/master/LEGAL/LOGIN.png)
+*Login page for the application.*
+
+### Home Page
+![Home Page](https://raw.githubusercontent.com/Antonius1712/docs-screenshots/master/LEGAL/HOME%20PAGE.png)
+*The home page of the Legal Checksheet Application.*
+
+### List Checksheet Home Page
+![List Checksheet Home Page](https://raw.githubusercontent.com/Antonius1712/docs-screenshots/master/LEGAL/LIST-CHECKSHEET-HOME-PAGE.png)
+*Screenshot showing the home page where checksheets are listed.*
+
+### Log Checksheet
+![Log Checksheet](https://raw.githubusercontent.com/Antonius1712/docs-screenshots/master/LEGAL/LOG-CHECKSHEET.png)
+*Overview of the log page for checksheets.*
+
+### Show Checksheet
+![Show Checksheet](https://raw.githubusercontent.com/Antonius1712/docs-screenshots/master/LEGAL/SHOW-CHECKSHEET.png)
+*Display of an individual checksheet.*
