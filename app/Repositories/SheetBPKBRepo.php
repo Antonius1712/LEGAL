@@ -23,6 +23,7 @@ class SheetBPKBRepo
     }
 
     public function SaveSheetBPKB($request){
+        
         $SheetBpkb = new SheetBpkb;
         $SheetBpkb->created_by = Auth()->user()->UserId;
         
@@ -140,6 +141,35 @@ class SheetBPKBRepo
         $SheetBpkb->date_of_loss = $this->formatCarbon($request->date_of_loss);
         $SheetBpkb->unit = $request->unit;
 
+        $SheetBpkb->surat_tanda_bukti_lapor_polisi_checkbox = null;
+        $SheetBpkb->tanggal_terima_surat_tanda_bukti_lapor_polisi = null;
+        $SheetBpkb->nomor_surat_tanda_bukti_lapor_polisi = null;
+        $SheetBpkb->kuitansi_blanko_checkbox = null;
+        $SheetBpkb->tanggal_terima_kuitansi_blanko = null;
+        $SheetBpkb->nomor_kuitansi_blanko = null;
+        $SheetBpkb->bpkb_checkbox = null;
+        $SheetBpkb->tanggal_terima_bpkb = null;
+        $SheetBpkb->nomor_bpkb = null;
+        $SheetBpkb->nomor_mesin_bpkb = null;
+        $SheetBpkb->nomor_rangka_bpkb = null;
+        $SheetBpkb->faktur_kendaraan_checkbox = null;
+        $SheetBpkb->tanggal_terima_faktur_kendaraan = null;
+        $SheetBpkb->keterangan_faktur_kendaraan = null;
+        $SheetBpkb->nik_checkbox = null;
+        $SheetBpkb->tanggal_terima_nik = null;
+        $SheetBpkb->nomor_nik = null;
+        $SheetBpkb->stnk_checkbox = null;
+        $SheetBpkb->tanggal_terima_stnk = null;
+        $SheetBpkb->nomor_stnk = null;
+        $SheetBpkb->tanggal_terima_stnk = null;
+        $SheetBpkb->nomor_stnk = null;
+        $SheetBpkb->surat_ketetapan_pajak_daerah_checkbox = null;
+        $SheetBpkb->tanggal_terima_surat_ketetapan_pajak_daerah = null;
+        $SheetBpkb->nomor_surat_ketetapan_pajak_daerah = null;
+        $SheetBpkb->kunci_kontak_checkbox = null;
+        $SheetBpkb->tanggal_terima_kunci_kontak = null;
+        $SheetBpkb->nomor_kunci_kontak = null;
+
         if( isset($request->surat_tanda_bukti_lapor_polisi_checkbox) 
             && $request->surat_tanda_bukti_lapor_polisi_checkbox == 'on' 
         ){
@@ -229,6 +259,8 @@ class SheetBPKBRepo
             $SheetBpkb->reject_at_legal = null;
         }
 
+        // dd($SheetBpkb);
+
         $SheetBpkb->save();
 
         if( isset($request->judul_tambahan) && count($request->judul_tambahan) > 0 ){
@@ -241,6 +273,9 @@ class SheetBPKBRepo
                 $sheetBpkbTambahan->nomor_tambahan = $request->nomor_tambahan[$key];
                 $sheetBpkbTambahan->save();
             }
+        }else{
+            // KALAU DI HAPUS SEMUA DI FRONTEND, DELETE DI DB.
+            SheetBpkbTambahan::where('sheet_bpkb_id', $SheetBpkb->id)->delete();
         }
 
         return $SheetBpkb;
@@ -249,6 +284,7 @@ class SheetBPKBRepo
     public function SaveLog($sheet, $comment = null){
         $status = $sheet->status;
         $next_email_role = null;
+        $reject_email_user_id = null;
         switch ($status) {
             case 1:
                 $action = 'Save draft Sheet BPKB';
@@ -264,10 +300,11 @@ class SheetBPKBRepo
             case 4:
                 $action = 'Reject Sheet BPKB and back to Analyst Claim MV';
                 $next_email_role = 'ANALYST_CLAIM';
+                $reject_email_user_id = Auth()->user()->UserId;
                 break;
             case 5:
                 $action = 'Approve Filing Sheet BPKB';
-                $next_email_role = 'USER_LEGAL';
+                $next_email_role = 'USER_CLAIM';
                 break;
             default:
                 $action = '';
@@ -282,6 +319,7 @@ class SheetBPKBRepo
         $LogSheetBPKB->action = $action;
         $LogSheetBPKB->comment = $comment;
         $LogSheetBPKB->next_email_role = $next_email_role;
+        $LogSheetBPKB->reject_email_user_id = $reject_email_user_id;
         $LogSheetBPKB->save();
     }
 

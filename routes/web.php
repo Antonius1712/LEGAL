@@ -18,7 +18,17 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::middleware(['auth', 'validasi-group'])
     ->group(function(){
-        Route::get('/', 'HomeController@index')->name('home');
+        // !DIBACA BAIK BAIK.
+        // !PUTRI MINTA SETELAH LOGIN LANGSUNG KE MENU CHECKSHEET TIDAK PERLU ADA HOMEPAGE.
+        // !9 SEPTEMBER 2022
+        // Route::get('/', 'HomeController@index')->name('home');
+
+        // *REDIRECT HOME TO CHECKSHEET MENU.
+        // *SIDEBAR CHECKSHEET DI COMMENT.
+        // *LOGINCONTROLLER DI UBAH.
+        Route::get('/', function(){
+            return redirect()->route('check-sheet-bpkb.index');
+        });
 
         Route::post('/check-sheet-bpkb/approve/{id}', 'CheckSheetBPKBController@approve')->name('check-sheet-bpkb.approve');
         Route::post('/check-sheet-bpkb/save', 'CheckSheetBPKBController@save')->name('check-sheet-bpkb.save');

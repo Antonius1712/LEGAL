@@ -3,6 +3,15 @@
     Form Check Sheet BPKB
 @endsection
 @section('content')
+    @if( $userGroup == 'HEAD_LEGAL' || $userGroup == 'USER_LEGAL' )
+        @php( $readonly = 'readonly' )
+        @php( $disabled = 'disabled' )
+        @php( $display = 'none' )
+    @else
+        @php( $readonly = '' )
+        @php( $disabled = '' )
+        @php( $display = '' )
+    @endif
     <form id="form-sheet" action="{{ Route('check-sheet-bpkb.update', $checkSheet->id) }}" method="post">
         {{ csrf_field() }}
         {{ method_field('PUT') }}
@@ -32,6 +41,7 @@
                                                 value="{{ $checkSheet->no_claim
                                                             ? $checkSheet->no_claim
                                                             : '' }}"
+                                                {{ $readonly }}
                                                 >
                                                 @if($errors->has('no_claim'))
                                                     <div class="error">{{ $errors->first('no_claim') }}</div>
@@ -48,6 +58,7 @@
                                                 value="{{ $checkSheet->tahun_kendaraan
                                                             ? $checkSheet->tahun_kendaraan
                                                             : '' }}"
+                                                {{ $readonly }}
                                                 >
                                                 @if($errors->has('tahun_kendaraan'))
                                                     <div class="error">{{ $errors->first('tahun_kendaraan') }}</div>
@@ -68,6 +79,7 @@
                                                 value="{{ $checkSheet->no_policy
                                                             ? $checkSheet->no_policy
                                                             : '' }}"
+                                                {{ $readonly }}
                                                 >
                                                 @if($errors->has('no_policy'))
                                                     <div class="error">{{ $errors->first('no_policy') }}</div>
@@ -84,6 +96,7 @@
                                                 value="{{ $checkSheet->nomor_polisi
                                                             ? $checkSheet->nomor_polisi
                                                             : '' }}"
+                                                {{ $readonly }}
                                                 >
                                                 @if($errors->has('nomor_polisi'))
                                                     <div class="error">{{ $errors->first('nomor_polisi') }}</div>
@@ -104,6 +117,7 @@
                                                 value="{{ $checkSheet->insured
                                                             ? $checkSheet->insured
                                                             : '' }}"
+                                                {{ $readonly }}
                                                 >
                                                 @if($errors->has('insured'))
                                                     <div class="error">{{ $errors->first('insured') }}</div>
@@ -116,10 +130,11 @@
                                                 <input type="text" 
                                                 name="date_of_loss" 
                                                 id="date_of_loss" 
-                                                class="form-control"
+                                                class="form-control datepicker"
                                                 value="{{ $checkSheet->date_of_loss
                                                             ? date('d-M-y', strtotime($checkSheet->date_of_loss))
                                                             : '' }}"
+                                                {{ $readonly }}
                                                 >
                                                 @if($errors->has('date_of_loss'))
                                                     <div class="error">{{ $errors->first('date_of_loss') }}</div>
@@ -140,6 +155,7 @@
                                                 value="{{ $checkSheet->unit
                                                             ? $checkSheet->unit
                                                             : '' }}"
+                                                {{ $readonly }}
                                                 >
                                                 @if($errors->has('unit'))
                                                     <div class="error">{{ $errors->first('unit') }}</div>
@@ -166,7 +182,11 @@
                                     {{ $checkSheet->surat_tanda_bukti_lapor_polisi_checkbox
                                         ? 'checked' 
                                         : '' }} 
+                                    {{ $disabled }}
                                     >
+                                    @if( $userGroup == 'USER_LEGAL' || $userGroup == 'HEAD_LEGAL' )
+                                        <input type="hidden" name="surat_tanda_bukti_lapor_polisi_checkbox" value="{{ $checkSheet->surat_tanda_bukti_lapor_polisi_checkbox ? 'on' : '' }}">
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-xs-12 col-md-12 col-lg-6">
@@ -185,6 +205,7 @@
                                         {{ $checkSheet->surat_tanda_bukti_lapor_polisi_checkbox
                                             ? ''
                                             : 'disabled' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -200,11 +221,12 @@
                                         id="nomor_surat_tanda_bukti_lapor_polisi" 
                                         class="form-control"
                                         value="{{ $checkSheet->nomor_surat_tanda_bukti_lapor_polisi
-                                                    ? date('d-M-y', strtotime($checkSheet->nomor_surat_tanda_bukti_lapor_polisi))
+                                                    ? $checkSheet->nomor_surat_tanda_bukti_lapor_polisi
                                                     : '' }}" 
                                         {{ $checkSheet->surat_tanda_bukti_lapor_polisi_checkbox
                                             ? ''
                                             : 'readonly' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -222,7 +244,11 @@
                                     {{ $checkSheet->kuitansi_blanko_checkbox
                                             ? 'checked'
                                             : '' }} 
+                                    {{ $disabled }}
                                     >
+                                    @if( $userGroup == 'USER_LEGAL' || $userGroup == 'HEAD_LEGAL' )
+                                        <input type="hidden" name="kuitansi_blanko_checkbox" value="{{ $checkSheet->kuitansi_blanko_checkbox ? 'on' : '' }}">
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-xs-12 col-md-12 col-lg-6">
@@ -241,6 +267,7 @@
                                         {{ $checkSheet->kuitansi_blanko_checkbox
                                             ? ''
                                             : 'disabled' }} 
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -261,6 +288,7 @@
                                         {{ $checkSheet->kuitansi_blanko_checkbox
                                             ? ''
                                             : 'readonly' }} 
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -278,7 +306,11 @@
                                     {{ $checkSheet->bpkb_checkbox
                                             ? 'checked'
                                             : '' }}
+                                    {{ $disabled }}
                                     >
+                                    @if( $userGroup == 'USER_LEGAL' || $userGroup == 'HEAD_LEGAL' )
+                                        <input type="hidden" name="bpkb_checkbox" value="{{ $checkSheet->bpkb_checkbox ? 'on' : '' }}">
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-xs-12 col-md-12 col-lg-6">
@@ -297,6 +329,7 @@
                                         {{ $checkSheet->bpkb_checkbox
                                             ? ''
                                             : 'disabled' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -317,6 +350,7 @@
                                         {{ $checkSheet->bpkb_checkbox
                                             ? ''
                                             : 'readonly' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -337,6 +371,7 @@
                                         {{ $checkSheet->bpkb_checkbox
                                             ? ''
                                             : 'readonly' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
 
@@ -354,6 +389,7 @@
                                         {{ $checkSheet->bpkb_checkbox
                                             ? ''
                                             : 'readonly' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -371,7 +407,11 @@
                                     {{ $checkSheet->faktur_kendaraan_checkbox
                                             ? 'checked'
                                             : '' }}
+                                    {{ $disabled }}
                                     >
+                                    @if( $userGroup == 'USER_LEGAL' || $userGroup == 'HEAD_LEGAL' )
+                                        <input type="hidden" name="faktur_kendaraan_checkbox" value="{{ $checkSheet->faktur_kendaraan_checkbox ? 'on' : '' }}">
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-xs-12 col-md-12 col-lg-6">
@@ -390,6 +430,7 @@
                                         {{ $checkSheet->faktur_kendaraan_checkbox
                                             ? ''
                                             : 'disabled' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -410,6 +451,7 @@
                                         {{ $checkSheet->faktur_kendaraan_checkbox
                                             ? ''
                                             : 'readonly' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -425,9 +467,13 @@
                                     name="nik_checkbox" 
                                     id="nik_checkbox"
                                     {{ $checkSheet->nik_checkbox
-                                            ? 'readonly'
+                                            ? 'checked'
                                             : '' }}
+                                    {{ $disabled }}
                                     >
+                                    @if( $userGroup == 'USER_LEGAL' || $userGroup == 'HEAD_LEGAL' )
+                                        <input type="hidden" name="nik_checkbox" value="{{ $checkSheet->nik_checkbox ? 'on' : '' }}">
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-xs-12 col-md-12 col-lg-6">
@@ -446,6 +492,7 @@
                                         {{ $checkSheet->nik_checkbox
                                             ? ''
                                             : 'disabled' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -466,6 +513,7 @@
                                         {{ $checkSheet->nomor_nik
                                             ? ''
                                             : 'readonly' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -481,9 +529,13 @@
                                     name="stnk_checkbox" 
                                     id="stnk_checkbox"
                                     {{ $checkSheet->stnk_checkbox
-                                            ? 'readonly'
+                                            ? 'checked'
                                             : '' }}
+                                    {{ $disabled }}
                                     >
+                                    @if( $userGroup == 'USER_LEGAL' || $userGroup == 'HEAD_LEGAL' )
+                                        <input type="hidden" name="stnk_checkbox" value="{{ $checkSheet->stnk_checkbox ? 'on' : '' }}">
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-xs-12 col-md-12 col-lg-6">
@@ -502,6 +554,7 @@
                                         {{ $checkSheet->stnk_checkbox
                                             ? ''
                                             : 'disabled' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -522,6 +575,7 @@
                                         {{ $checkSheet->nomor_stnk
                                             ? ''
                                             : 'readonly' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -537,9 +591,13 @@
                                     name="surat_ketetapan_pajak_daerah_checkbox" 
                                     id="surat_ketetapan_pajak_daerah_checkbox"
                                     {{ $checkSheet->surat_ketetapan_pajak_daerah_checkbox
-                                            ? 'readonly'
+                                            ? 'checked'
                                             : '' }}
+                                    {{ $disabled }}
                                     >
+                                    @if( $userGroup == 'USER_LEGAL' || $userGroup == 'HEAD_LEGAL' )
+                                        <input type="hidden" name="surat_ketetapan_pajak_daerah_checkbox" value="{{ $checkSheet->surat_ketetapan_pajak_daerah_checkbox ? 'on' : '' }}">
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-xs-12 col-md-12 col-lg-6">
@@ -558,6 +616,7 @@
                                         {{ $checkSheet->surat_ketetapan_pajak_daerah_checkbox
                                             ? ''
                                             : 'disabled' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -578,6 +637,7 @@
                                         {{ $checkSheet->surat_ketetapan_pajak_daerah_checkbox
                                             ? ''
                                             : 'readonly' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -593,9 +653,13 @@
                                     name="kunci_kontak_checkbox" 
                                     id="kunci_kontak_checkbox"
                                     {{ $checkSheet->kunci_kontak_checkbox
-                                            ? 'readonly'
+                                            ? 'checked'
                                             : '' }}
+                                    {{ $disabled }}
                                     >
+                                    @if( $userGroup == 'USER_LEGAL' || $userGroup == 'HEAD_LEGAL' )
+                                        <input type="hidden" name="kunci_kontak_checkbox" value="{{ $checkSheet->kunci_kontak_checkbox ? 'on' : '' }}">
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-xs-12 col-md-12 col-lg-6">
@@ -614,6 +678,7 @@
                                         {{ $checkSheet->kunci_kontak_checkbox
                                             ? ''
                                             : 'disabled' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -634,6 +699,7 @@
                                         {{ $checkSheet->kunci_kontak_checkbox
                                             ? ''
                                             : 'readonly' }}
+                                        {{ $readonly }}
                                         >
                                     </div>
                                 </div>
@@ -641,56 +707,114 @@
                         </div>
 
                         {{-- TAMBAHAN --}}
-                        <button id="btn-add" class="btn btn-success">Add</button>
+                        <button id="btn-add" class="btn btn-success" style="display:{{ $display }}">
+                            Add
+                        </button>
                         <table class="table table-bordered">
                             <thead>
                                 <tr class="bg-primary text-white text-center">
                                     <th> Judul </th>    
                                     <th> Tanggal Terima </th>    
                                     <th> Nomor </th>    
-                                    <th> Hapus </th>    
+                                    @if( $userGroup != 'USER_LEGAL' && $userGroup != 'HEAD_LEGAL' )
+                                        <th> Hapus </th>    
+                                    @endif
                                 </tr>    
                             </thead>    
                             <tbody id="appendContent">
-                                {{-- {{ dd($sheetTambahan) }} --}}
-                                @if( count($sheetTambahan) > 0 )
-                                @foreach ($sheetTambahan as $key => $val)
-                                <tr class="text-center bg-white text-black">
-                                    <td>
-                                        <input type="text" 
-                                        name="judul_tambahan[]" 
-                                        class="form-control"
-                                        value="{{ $val->judul_tambahan 
-                                                    ? $val->judul_tambahan 
-                                                    : $val->judul_tambahan }}"
-                                        >    
-                                    </td>    
-                                    <td>
-                                        <input type="text" 
-                                        name="tanggal_terima_tambahan[]" 
-                                        class="form-control datepicker"
-                                        value="{{ $val->tanggal_terima_tambahan 
-                                            ? date('d-M-y', strtotime($val->tanggal_terima_tambahan ))
-                                            : $val->tanggal_terima_tambahan }}"
-                                        >    
-                                    </td>    
-                                    <td>
-                                        <input type="text" 
-                                        name="nomor_tambahan[]" 
-                                        class="form-control"
-                                        value="{{ $val->nomor_tambahan 
-                                            ? $val->nomor_tambahan 
-                                            : $val->nomor_tambahan }}"
-                                        >    
-                                    </td>
-                                    <td>
-                                        <button type="button" 
-                                        class="btn btn-danger btn-hapus">
-                                            Hapus
-                                        </button>    
-                                    </td>
-                                </tr>
-                                @endforeach
+                                @if( old('judul_tambahan') != null && count(old('judul_tambahan')) > 0 )
+                                    @foreach (old('judul_tambahan') as $key => $val)
+                                        <tr class="text-center bg-white text-black">
+                                            <td>
+                                                <input type="text" 
+                                                name="judul_tambahan[]" 
+                                                class="form-control"
+                                                value="{{ old('judul_tambahan')[$key] 
+                                                            ? old('judul_tambahan')[$key] 
+                                                            : old('judul_tambahan')[$key] }}"
+                                                required
+                                                >
+                                                @if($errors->has('judul_tambahan.'.$key))
+                                                    <div class="error">{{ $errors->first('judul_tambahan.'.$key) }}</div>
+                                                @endif
+                                            </td>    
+                                            <td>
+                                                <input type="text" 
+                                                name="tanggal_terima_tambahan[]" 
+                                                class="form-control datepicker"
+                                                value="{{ old('tanggal_terima_tambahan')[$key] 
+                                                            ? old('tanggal_terima_tambahan')[$key] 
+                                                            : old('tanggal_terima_tambahan')[$key] }}"
+                                                required
+                                                >    
+                                                @if($errors->has('tanggal_terima_tambahan.'.$key))
+                                                    <div class="error">{{ $errors->first('tanggal_terima_tambahan.'.$key) }}</div>
+                                                @endif
+                                            </td>    
+                                            <td>
+                                                <input type="text" 
+                                                name="nomor_tambahan[]" 
+                                                class="form-control"
+                                                value="{{ old('nomor_tambahan')[$key] 
+                                                            ? old('nomor_tambahan')[$key] 
+                                                            : old('nomor_tambahan')[$key] }}"
+                                                required
+                                                >   
+                                                @if($errors->has('nomor_tambahan.'.$key))
+                                                    <div class="error">{{ $errors->first('nomor_tambahan.'.$key) }}</div>
+                                                @endif 
+                                            </td>
+                                            <td>
+                                                <button type="button" 
+                                                class="btn btn-danger btn-hapus">
+                                                    Hapus
+                                                </button>    
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @elseif( count($sheetTambahan) > 0 )
+                                    @foreach ($sheetTambahan as $key => $val)
+                                        <tr class="text-center bg-white text-black">
+                                            <td>
+                                                <input type="text" 
+                                                name="judul_tambahan[]" 
+                                                class="form-control"
+                                                value="{{ $val->judul_tambahan 
+                                                            ? $val->judul_tambahan 
+                                                            : $val->judul_tambahan }}"
+                                                {{ $readonly }}
+                                                >    
+                                            </td>    
+                                            <td>
+                                                <input type="text" 
+                                                name="tanggal_terima_tambahan[]" 
+                                                class="form-control datepicker"
+                                                value="{{ $val->tanggal_terima_tambahan 
+                                                    ? date('d-M-y', strtotime($val->tanggal_terima_tambahan ))
+                                                    : $val->tanggal_terima_tambahan }}"
+                                                {{ $readonly }}
+                                                >    
+                                            </td>    
+                                            <td>
+                                                <input type="text" 
+                                                name="nomor_tambahan[]" 
+                                                class="form-control"
+                                                value="{{ $val->nomor_tambahan 
+                                                    ? $val->nomor_tambahan 
+                                                    : $val->nomor_tambahan }}"
+                                                {{ $readonly }}
+                                                >    
+                                            </td>
+                                            @if( $userGroup != 'USER_LEGAL' && $userGroup != 'HEAD_LEGAL' )
+                                            <td>
+                                                <button type="button" 
+                                                class="btn btn-danger btn-hapus">
+                                                    Hapus
+                                                </button>    
+                                            </td>
+                                            @endif
+                                        </tr>
+                                    @endforeach
                                 @endif
                             </tbody>
                         </table>
@@ -882,6 +1006,9 @@
         } else {
             $('#tanggal_terima_surat_tanda_bukti_lapor_polisi').attr('disabled', true);
             $('#nomor_surat_tanda_bukti_lapor_polisi').attr('readonly', true);
+
+            $('#tanggal_terima_surat_tanda_bukti_lapor_polisi').val('');
+            $('#nomor_surat_tanda_bukti_lapor_polisi').val('');
         }
     });
 
@@ -892,6 +1019,9 @@
         } else {
             $('#tanggal_terima_kuitansi_blanko').attr('disabled', true);
             $('#nomor_kuitansi_blanko').attr('readonly', true);
+
+            $('#tanggal_terima_kuitansi_blanko').val('');
+            $('#nomor_kuitansi_blanko').val('');
         }
     });
 
@@ -899,23 +1029,31 @@
         if( $(this).prop('checked') == true ){
             $('#tanggal_terima_bpkb').attr('disabled', false);
             $('#nomor_bpkb').attr('readonly', false);
-            $('#nomor_mesin_bpkb').attr('disabled', false);
+            $('#nomor_mesin_bpkb').attr('readonly', false);
             $('#nomor_rangka_bpkb').attr('readonly', false);
         } else {
             $('#tanggal_terima_bpkb').attr('disabled', true);
             $('#nomor_bpkb').attr('readonly', true);
-            $('#nomor_mesin_bpkb').attr('disabled', true);
+            $('#nomor_mesin_bpkb').attr('readonly', true);
             $('#nomor_rangka_bpkb').attr('readonly', true);
+
+            $('#tanggal_terima_bpkb').val('');
+            $('#nomor_bpkb').val('');
+            $('#nomor_mesin_bpkb').val('');
+            $('#nomor_rangka_bpkb').val('');
         }
     });
 
     $('#faktur_kendaraan_checkbox').change(function(){
         if( $(this).prop('checked') == true ){
             $('#tanggal_terima_faktur_kendaraan').attr('disabled', false);
-            $('#nomor_faktur_kendaraan').attr('readonly', false);
+            $('#keterangan_faktur_kendaraan').attr('readonly', false);
         } else {
             $('#tanggal_terima_faktur_kendaraan').attr('disabled', true);
-            $('#nomor_faktur_kendaraan').attr('readonly', true);
+            $('#keterangan_faktur_kendaraan').attr('readonly', true);
+
+            $('#tanggal_terima_faktur_kendaraan').val('');
+            $('#keterangan_faktur_kendaraan').val('');
         }
     });
 
@@ -926,36 +1064,48 @@
         } else {
             $('#tanggal_terima_nik').attr('disabled', true);
             $('#nomor_nik').attr('readonly', true);
+
+            $('#tanggal_terima_nik').val('');
+            $('#nomor_nik').val('');
         }
     });
 
     $('#stnk_checkbox').change(function(){
         if( $(this).prop('checked') == true ){
             $('#tanggal_terima_stnk').attr('disabled', false);
-            $('#nomor_stnk').attr('disabled', false);
+            $('#nomor_stnk').attr('readonly', false);
         } else {
             $('#tanggal_terima_stnk').attr('disabled', true);
-            $('#nomor_stnk').attr('disabled', true);
+            $('#nomor_stnk').attr('readonly', true);
+
+            $('#tanggal_terima_stnk').val('');
+            $('#nomor_stnk').val('');
         }
     });
 
     $('#surat_ketetapan_pajak_daerah_checkbox').change(function(){
         if( $(this).prop('checked') == true ){
             $('#tanggal_terima_surat_ketetapan_pajak_daerah').attr('disabled', false);
-            $('#nomor_surat_ketetapan_pajak_daerah').attr('disabled', false);
+            $('#nomor_surat_ketetapan_pajak_daerah').attr('readonly', false);
         } else {
             $('#tanggal_terima_surat_ketetapan_pajak_daerah').attr('disabled', true);
-            $('#nomor_surat_ketetapan_pajak_daerah').attr('disabled', true);
+            $('#nomor_surat_ketetapan_pajak_daerah').attr('readonly', true);
+
+            $('#tanggal_terima_surat_ketetapan_pajak_daerah').val('');
+            $('#nomor_surat_ketetapan_pajak_daerah').val('');
         }
     });
 
     $('#kunci_kontak_checkbox').change(function(){
         if( $(this).prop('checked') == true ){
             $('#tanggal_terima_kunci_kontak').attr('disabled', false);
-            $('#nomor_kunci_kontak').attr('disabled', false);
+            $('#nomor_kunci_kontak').attr('readonly', false);
         } else {
             $('#tanggal_terima_kunci_kontak').attr('disabled', true);
-            $('#nomor_kunci_kontak').attr('disabled', true);
+            $('#nomor_kunci_kontak').attr('readonly', true);
+
+            $('#tanggal_terima_kunci_kontak').val('');
+            $('#nomor_kunci_kontak').val('');
         }
     });
     /* FUNGSI CHECKBOX END */

@@ -106,7 +106,7 @@
 
         </div>
 
-        <div style="page-break-after: always">&nbsp;</div>
+        <div style="page-break-before: always">&nbsp;</div>
 
         <div class="row">
             <div class="col-xs-12 col-md-12 col-lg-12">
@@ -150,7 +150,9 @@
                     </tr>
                     <tr>
                         <td>
-                            By : {{ $SheetBpkb->getApproveUserLegalData->Name }}
+                            By : {{ isset($SheetBpkb->getApproveUserLegalData->Name) 
+                                ? $SheetBpkb->getApproveUserLegalData->Name 
+                                : '' }}
                         </td>
                     </tr>
                 </table>

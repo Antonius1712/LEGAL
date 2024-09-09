@@ -191,7 +191,7 @@
                                     id="tanggal_terima_surat_tanda_bukti_lapor_polisi" 
                                     class="form-control datepicker"
                                     value="{{ $checkSheet->tanggal_terima_surat_tanda_bukti_lapor_polisi
-                                                ? $checkSheet->tanggal_terima_surat_tanda_bukti_lapor_polisi
+                                                ? date('d-M-Y', strtotime($checkSheet->tanggal_terima_surat_tanda_bukti_lapor_polisi))
                                                 : '' }}" 
                                     disabled
                                     >
@@ -244,7 +244,7 @@
                                     id="tanggal_terima_kuitansi_blanko" 
                                     class="form-control datepicker" 
                                     value="{{ $checkSheet->tanggal_terima_kuitansi_blanko
-                                                ? $checkSheet->tanggal_terima_kuitansi_blanko
+                                                ? date('d-M-Y', strtotime($checkSheet->tanggal_terima_kuitansi_blanko))
                                                 : '' }}" 
                                     disabled
                                     >
@@ -297,7 +297,7 @@
                                     id="tanggal_terima_bpkb" 
                                     class="form-control datepicker" 
                                     value="{{ $checkSheet->tanggal_terima_bpkb
-                                                ? $checkSheet->tanggal_terima_bpkb
+                                                ? date('d-M-Y', strtotime($checkSheet->tanggal_terima_bpkb))
                                                 : '' }}"
                                     disabled
                                     >
@@ -384,7 +384,7 @@
                                     id="tanggal_terima_faktur_kendaraan" 
                                     class="form-control datepicker" 
                                     value="{{ $checkSheet->tanggal_terima_faktur_kendaraan
-                                                ? $checkSheet->tanggal_terima_faktur_kendaraan
+                                                ? date('d-M-Y', strtotime($checkSheet->tanggal_terima_faktur_kendaraan))
                                                 : '' }}"
                                     disabled
                                     >
@@ -437,7 +437,7 @@
                                     id="tanggal_terima_nik" 
                                     class="form-control datepicker" 
                                     value="{{ $checkSheet->tanggal_terima_nik
-                                                ? $checkSheet->tanggal_terima_nik
+                                                ? date('d-M-Y', strtotime($checkSheet->tanggal_terima_nik))
                                                 : '' }}"
                                     disabled
                                     >
@@ -490,7 +490,7 @@
                                     id="tanggal_terima_stnk" 
                                     class="form-control datepicker" 
                                     value="{{ $checkSheet->tanggal_terima_stnk
-                                                ? $checkSheet->tanggal_terima_stnk
+                                                ? date('d-M-Y', strtotime($checkSheet->tanggal_terima_stnk))
                                                 : '' }}"
                                     disabled
                                     >
@@ -543,7 +543,7 @@
                                     id="tanggal_terima_surat_ketetapan_pajak_daerah" 
                                     class="form-control datepicker" 
                                     value="{{ $checkSheet->tanggal_terima_surat_ketetapan_pajak_daerah
-                                                ? $checkSheet->tanggal_terima_surat_ketetapan_pajak_daerah
+                                                ? date('d-M-Y', strtotime($checkSheet->tanggal_terima_surat_ketetapan_pajak_daerah))
                                                 : '' }}"
                                     disabled
                                     >
@@ -596,7 +596,7 @@
                                     id="tanggal_terima_kunci_kontak" 
                                     class="form-control datepicker" 
                                     value="{{ $checkSheet->tanggal_terima_kunci_kontak
-                                                ? $checkSheet->tanggal_terima_kunci_kontak
+                                                ? date('d-M-Y', strtotime($checkSheet->tanggal_terima_kunci_kontak))
                                                 : '' }}"
                                     disabled
                                     >
@@ -652,7 +652,7 @@
                                     name="tanggal_terima_tambahan[]" 
                                     class="form-control datepicker"
                                     value="{{ $val->tanggal_terima_tambahan 
-                                                ? $val->tanggal_terima_tambahan 
+                                                ? date('d-M-Y', strtotime($val->tanggal_terima_tambahan ))
                                                 : $val->tanggal_terima_tambahan }}"
                                     disabled
                                     >    
